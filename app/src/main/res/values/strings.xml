@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">Clinic_SEG2105</string>
+    <string name="app_name">Clinic</string>
+    <string name="frontpage_screen">Create New User Account</string>
+    <string name="Name">Full Name</string>
+    <string name="password">Enter Password</string>
+    <string name="createAcc">Create Account</string>
+    <string name="enter1">(Full Name)</string>
+    <string name="enter2">(Enter Password)</string>
+    <string name="welcomescreen">Welcome</string>
+
+    <string-array name="login_dropdown">
+        <item>Patient</item>
+        <item>Employee</item>
+    </string-array>
+
+
 </resources>
