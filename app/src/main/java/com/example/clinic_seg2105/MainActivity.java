@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity{
     Database_helper myDb;
 
     public EditText Name;
+    private EditText Username;
     private EditText Password;
     public String person_type;
     private Button create;
@@ -47,7 +48,8 @@ public class MainActivity extends AppCompatActivity{
 
 
         myDb = new Database_helper(this);
-        Name = findViewById(R.id.userName);
+        Name = findViewById(R.id.fullName);
+        Username = findViewById(R.id.userName);
         Password = findViewById(R.id.userPassword);
         create = findViewById(R.id.createAccount);
         AddData();
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity{
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        boolean isInserted = myDb.insertData(Name.getText().toString(), Password.getText().toString(), person_type);
+                        boolean isInserted = myDb.insertData(Name.getText().toString(), Username.getText().toString(), Password.getText().toString(), person_type);
 
                         if (isInserted == true) {
                             Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
