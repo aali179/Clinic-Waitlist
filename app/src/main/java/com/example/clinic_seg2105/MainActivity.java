@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,8 +20,10 @@ public class MainActivity extends AppCompatActivity{
     public EditText Name;
     private EditText Username;
     private EditText Password;
-    public String person_type;
     private Button create;
+
+    public static String person_type;
+    public static String user_name;
     Spinner spinner;
 
     @Override
@@ -52,9 +56,35 @@ public class MainActivity extends AppCompatActivity{
         Username = findViewById(R.id.userName);
         Password = findViewById(R.id.userPassword);
         create = findViewById(R.id.createAccount);
+
+        Name.addTextChangedListener(loginTextWatcher);
+        Username.addTextChangedListener(loginTextWatcher);
+        Password.addTextChangedListener(loginTextWatcher);
+
         AddData();
 
     }
+
+    private TextWatcher loginTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String nameInput = Name.getText().toString().trim();
+            String usernameInput = Username.getText().toString().trim();
+            String passwordInput = Password.getText().toString().trim();
+
+            create.setEnabled(!nameInput.isEmpty() && !usernameInput.isEmpty() && !passwordInput.isEmpty());
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 
     public void AddData() {
         create.setOnClickListener(
@@ -67,6 +97,8 @@ public class MainActivity extends AppCompatActivity{
                             Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
                         } else
                             Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
+
+                        user_name = Name.getText().toString();
 
                         openActivity2();
                     }
