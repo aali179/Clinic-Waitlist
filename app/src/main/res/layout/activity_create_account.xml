@@ -7,7 +7,7 @@
     tools:context=".createAccount">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/welcomeScreen"
         android:layout_width="326dp"
         android:layout_height="53dp"
         android:text="@string/welcomescreen"
