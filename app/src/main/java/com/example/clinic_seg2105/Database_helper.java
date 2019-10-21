@@ -10,8 +10,9 @@ public class Database_helper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "People.db";
     public static final String TABLE_NAME = "people_table";
     public static final String COL1 = "NAME";
-    public static final String COL2 = "TYPE";
+    public static final String COL2 = "USERNAME";
     public static final String COL3 = "PASSWORD";
+    public static final String COL4 = "TYPE";
 
 
     public Database_helper(Context context){
@@ -30,12 +31,13 @@ public class Database_helper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String name, String Password, String Type){
+    public boolean insertData(String name, String Username, String Password, String Type){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL1,name);
-        contentValues.put(COL2, Password);
-        contentValues.put(COL3, Type);
+        contentValues.put(COL2, Username);
+        contentValues.put(COL3, Password);
+        contentValues.put(COL4, Type);
         long res = db.insert(TABLE_NAME, null, contentValues);
 
         if (res == -1){ return false; }
