@@ -17,8 +17,18 @@ public class MainActivity extends AppCompatActivity{
 
     public EditText Name;
     private EditText Password;
+<<<<<<< Updated upstream
     public String person_type;
     private Button create;
+=======
+    public EditText Password_re;
+    private Button create;
+
+    public static String person_type;
+    public static String user_name;
+    public static String pass_word;
+    public static String pass_word_re;
+>>>>>>> Stashed changes
     Spinner spinner;
 
     @Override
@@ -49,11 +59,53 @@ public class MainActivity extends AppCompatActivity{
         myDb = new Database_helper(this);
         Name = findViewById(R.id.userName);
         Password = findViewById(R.id.userPassword);
+        Password_re = findViewById(R.id.passRe);
+
         create = findViewById(R.id.createAccount);
+<<<<<<< Updated upstream
+=======
+
+        Name.addTextChangedListener(loginTextWatcher);
+        Username.addTextChangedListener(loginTextWatcher);
+        Password.addTextChangedListener(loginTextWatcher);
+        Password_re.addTextChangedListener(loginTextWatcher);
+
+>>>>>>> Stashed changes
         AddData();
 
     }
 
+<<<<<<< Updated upstream
+=======
+    private TextWatcher loginTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String nameInput = Name.getText().toString().trim();
+            String usernameInput = Username.getText().toString().trim();
+            String passwordInput = Password.getText().toString().trim();
+            String passwordReInput = Password_re.getText().toString().trim();
+
+            boolean passChecker;
+
+            if (passwordInput.equals(passwordReInput)){
+                passChecker = true;
+            } else {passChecker = false;}
+
+            create.setEnabled(!nameInput.isEmpty() && !usernameInput.isEmpty() && !passwordInput.isEmpty() && !passwordReInput.isEmpty() && passChecker);
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
+
+>>>>>>> Stashed changes
     public void AddData() {
         create.setOnClickListener(
                 new View.OnClickListener() {
