@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,19 +18,14 @@ public class MainActivity extends AppCompatActivity{
     Database_helper myDb;
 
     public EditText Name;
+    private EditText Username;
     private EditText Password;
-<<<<<<< Updated upstream
-    public String person_type;
+    //public String person_type;
     private Button create;
-=======
     public EditText Password_re;
-    private Button create;
 
     public static String person_type;
     public static String user_name;
-    public static String pass_word;
-    public static String pass_word_re;
->>>>>>> Stashed changes
     Spinner spinner;
 
     @Override
@@ -57,26 +54,23 @@ public class MainActivity extends AppCompatActivity{
 
 
         myDb = new Database_helper(this);
-        Name = findViewById(R.id.userName);
+        Name = findViewById(R.id.fullName);
+        Username = findViewById(R.id.userName);
         Password = findViewById(R.id.userPassword);
         Password_re = findViewById(R.id.passRe);
 
         create = findViewById(R.id.createAccount);
-<<<<<<< Updated upstream
-=======
 
         Name.addTextChangedListener(loginTextWatcher);
         Username.addTextChangedListener(loginTextWatcher);
         Password.addTextChangedListener(loginTextWatcher);
+
         Password_re.addTextChangedListener(loginTextWatcher);
 
->>>>>>> Stashed changes
         AddData();
 
     }
 
-<<<<<<< Updated upstream
-=======
     private TextWatcher loginTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -105,18 +99,19 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
->>>>>>> Stashed changes
     public void AddData() {
         create.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        boolean isInserted = myDb.insertData(Name.getText().toString(), Password.getText().toString(), person_type);
+                        boolean isInserted = myDb.insertData(Name.getText().toString(), Username.getText().toString(), Password.getText().toString(), person_type);
 
                         if (isInserted == true) {
                             Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
                         } else
                             Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
+
+                        user_name = Name.getText().toString();
 
                         openActivity2();
                     }

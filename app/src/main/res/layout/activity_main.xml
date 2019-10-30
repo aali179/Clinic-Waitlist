@@ -23,8 +23,7 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:text="@string/frontpage_screen"
-<<<<<<< Updated upstream
-=======
+
         android:textColor="#2278BE"
         android:textColorLink="#03A9F4"
         android:textStyle="bold"
@@ -52,101 +51,80 @@
         app:layout_constraintVertical_bias="0.32" />
 
     <TextView
-        android:id="@+id/name_static"
+        android:id="@+id/fullname_static"
         android:layout_width="200dp"
         android:layout_height="25dp"
->>>>>>> Stashed changes
         android:gravity="center"
+
+        android:text="@string/frontpage_screen"
+        android:textColor="#2278BE"
+        android:textColorLink="#03A9F4"
+        android:textStyle="bold"
+        android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< Updated upstream
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintVertical_bias="0.35" />
-=======
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.369" />
->>>>>>> Stashed changes
+        app:layout_constraintVertical_bias="0.35" />
+
 
     <EditText
         android:id="@+id/userName"
-        android:layout_width="197dp"
-        android:layout_height="44dp"
+        android:layout_width="200dp"
+        android:layout_height="39dp"
         android:gravity="center"
-        android:text="@string/enter1"
+        android:hint="(Username)"
+        android:textColorHint="#77A7C4"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< Updated upstream
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.486" />
-=======
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.432" />
->>>>>>> Stashed changes
+        app:layout_constraintVertical_bias="0.453" />
 
     <TextView
-        android:id="@+id/name_static"
+        android:id="@+id/username_static"
         android:layout_width="200dp"
         android:layout_height="25dp"
-        android:text="@string/Name"
         android:gravity="center"
+        android:text="Create a username"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-<<<<<<< Updated upstream
-        app:layout_constraintVertical_bias="0.535" />
-=======
-        app:layout_constraintVertical_bias="0.478" />
->>>>>>> Stashed changes
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/userPassword"
-        android:layout_width="202dp"
-        android:layout_height="46dp"
+        android:layout_width="200dp"
+        android:layout_height="39dp"
         android:gravity="center"
-<<<<<<< Updated upstream
         android:text="@string/enter2"
-=======
-        android:hint="(Password)"
-        android:inputType="textPassword"
-        android:textColorHint="#77A7C4"
         android:textSize="14sp"
->>>>>>> Stashed changes
+        android:hint="(Password)"
+        android:textColorHint="#77A7C4"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< Updated upstream
         app:layout_constraintVertical_bias="0.588" />
-=======
-        app:layout_constraintVertical_bias="0.544" />
->>>>>>> Stashed changes
 
     <TextView
         android:id="@+id/password_static"
         android:layout_width="200dp"
         android:layout_height="25dp"
-        android:text="@string/password"
         android:gravity="center"
+        android:text="Create a password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< Updated upstream
         app:layout_constraintVertical_bias="0.635" />
-=======
-        app:layout_constraintVertical_bias="0.589" />
->>>>>>> Stashed changes
 
     <Button
         android:id="@+id/createAccount"
@@ -160,20 +138,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.939" />
 
-    <TextView
-        android:id="@+id/userType"
-        android:layout_width="200dp"
-        android:layout_height="25dp"
-        android:gravity="center"
-        android:text="Select user type:"
-        android:textColor="#2278BE"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.764" />
 
     <EditText
         android:id="@+id/passRe"
@@ -189,10 +153,7 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< Updated upstream
         app:layout_constraintVertical_bias="0.731" />
-=======
-        app:layout_constraintVertical_bias="0.657" />
 
     <TextView
         android:id="@+id/passRe_static"
@@ -218,7 +179,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.835" />
 
-
->>>>>>> Stashed changes
+    <TextView
+        android:id="@+id/userType"
+        android:layout_width="200dp"
+        android:layout_height="25dp"
+        android:gravity="center"
+        android:text="Select user type:"
+        android:textColor="#2278BE"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.796" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
