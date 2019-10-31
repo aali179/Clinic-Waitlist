@@ -21,10 +21,10 @@ public class createAccount extends AppCompatActivity {
         openWelcomeScreen();
     }
 
+    //Displaying user information
     public void openWelcomeScreen(){
-        TextView textView = (TextView) findViewById(R.id.textView);
+        TextView textView = (TextView) findViewById(R.id.welcomeScreen);
         textView.append(" " + user_name + " you are logged in as " + person_type);
     }
-
 
 }
