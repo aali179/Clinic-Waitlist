@@ -1,6 +1,7 @@
 package com.example.clinic_seg2105;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,11 +36,13 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         spinner = (Spinner)findViewById(R.id.spinner);
 
-        // Using login_dropdown (check string.xml) to allow user to select from dropdown menue
+        // Using login_dropdown (check string.xml) to allow user to select from dropdown menu
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.login_dropdown, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -130,13 +133,20 @@ public class MainActivity extends AppCompatActivity{
 
                         user_name = Name.getText().toString();
 
-                        openActivity2();
+                        openLoginScreen();
                     }
                 }
         );
     }
-    public void openActivity2(){
-        Intent intent = new Intent(this, createAccount.class);
+    public void openLoginScreen(){
+        Intent intent = new Intent(this, loginScreen.class);
+
+        // clearing the fields , so if user goes back the fields are empty
+        Name.getText().clear();
+        Username.getText().clear();
+        Password.getText().clear();
+        Password_re.getText().clear();
+
         startActivity(intent);
     }
 
