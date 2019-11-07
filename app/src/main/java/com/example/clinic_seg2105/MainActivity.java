@@ -40,14 +40,13 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////// SPINNER ///////////////////////////////////////////
         spinner = (Spinner)findViewById(R.id.spinner);
-
         // Using login_dropdown (check string.xml) to allow user to select from dropdown menu
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.login_dropdown, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //When user clicks the dropdown menu, either onItemSelected will activate or onNothingSelected (nothing happens)
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -61,8 +60,11 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
-        ////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        ////////////////////////////////////////////////// INITIALIZATION ////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //just some initialization
         myDb = new Database_helper(this);
         Name = findViewById(R.id.fullName);
@@ -71,21 +73,20 @@ public class MainActivity extends AppCompatActivity{
         Password_re = findViewById(R.id.passRe);
         create = findViewById(R.id.createAccount);
 
-        // We pass loginTextWatcher (a function) to the addTextChangedListener method to Name, Username, Password and
+        // We pass crrAccTextWatcher (a function) to the addTextChangedListener method to Name, Username, Password and
         // password-reenter
-        Name.addTextChangedListener(loginTextWatcher);
-        Username.addTextChangedListener(loginTextWatcher);
-        Password.addTextChangedListener(loginTextWatcher);
-        Password_re.addTextChangedListener(loginTextWatcher);
+        Name.addTextChangedListener(crrAccTextWatcher);
+        Username.addTextChangedListener(crrAccTextWatcher);
+        Password.addTextChangedListener(crrAccTextWatcher);
+        Password_re.addTextChangedListener(crrAccTextWatcher);
 
         //adds data to database
         AddData();
-
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // LOGIN TEXT WATCHER METHOD //
-    private TextWatcher loginTextWatcher = new TextWatcher() {
+    private TextWatcher crrAccTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -114,6 +115,12 @@ public class MainActivity extends AppCompatActivity{
 
         }
     };
+
+
+
+    public void switchtoLogin (View view){
+        openLoginScreen();
+    }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
