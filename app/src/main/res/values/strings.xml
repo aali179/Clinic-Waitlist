@@ -7,6 +7,7 @@
     <string name="enter1">(Full Name)</string>
     <string name="enter2">(Enter Password)</string>
     <string name="welcomescreen">Welcome</string>
+    <string name="login"><u>Already have an account? Click here to sign in</u>.</string>
 
     <string-array name="login_dropdown">
         <item>Patient</item>

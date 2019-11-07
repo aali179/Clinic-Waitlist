@@ -130,7 +130,6 @@
         android:id="@+id/createAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="createAccount"
         android:text="@string/createAcc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -142,10 +141,10 @@
         android:id="@+id/passRe"
         android:layout_width="200dp"
         android:layout_height="39dp"
-        android:text="@string/enter2"
         android:gravity="center"
         android:hint="(Password)"
         android:inputType="textPassword"
+        android:text="@string/enter2"
         android:textColorHint="#77A7C4"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -153,22 +152,20 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintVertical_bias="0.703" />
 
     <TextView
         android:id="@+id/passRe_static"
         android:layout_width="200dp"
         android:layout_height="25dp"
         android:gravity="center"
-        android:hint="(Password)"
-        android:textColorHint="#77A7C4"
-        android:inputType="textPassword"
+        android:text="Reenter Password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7" />
+        app:layout_constraintVertical_bias="0.745" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -176,10 +173,10 @@
         android:layout_height="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.86" />
+        app:layout_constraintVertical_bias="0.84" />
 
     <TextView
         android:id="@+id/userType"
@@ -191,9 +188,23 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.821" />
+        app:layout_constraintVertical_bias="0.801" />
+
+    <TextView
+        android:id="@+id/sign_in_clickable"
+        android:layout_width="348dp"
+        android:layout_height="28dp"
+        android:text="@string/login"
+        android:onClick="switchtoLogin"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.893" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
