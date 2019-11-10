@@ -18,7 +18,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity{
 
     // Calling an instance of the database class that stores all the information
-    Database_helper myDb;
+    Database_helper myDb = new Database_helper(this);
 
     // Creating EditText fields for Name, Username and Password
     public EditText Name;
@@ -131,6 +131,7 @@ public class MainActivity extends AppCompatActivity{
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        
                         boolean isInserted = myDb.insertData(Name.getText().toString(), Username.getText().toString(), Password.getText().toString(), person_type);
 
                         if (isInserted) {

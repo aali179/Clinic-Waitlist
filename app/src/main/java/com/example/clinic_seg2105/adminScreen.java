@@ -2,6 +2,7 @@ package com.example.clinic_seg2105;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,12 +22,14 @@ public class adminScreen extends AppCompatActivity {
         editService = (Button) findViewById(R.id.editServiceButton);
         deleteService = (Button) findViewById(R.id.deleteServiceButton);
 
-        addService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAddDialog();
-            }
-        });
+        EditData();
+
+       // addService.setOnClickListener(new View.OnClickListener() {
+         //   @Override
+           // public void onClick(View v) {
+             //   openAddDialog();
+            //}
+        //});
 
 //        editService.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -44,7 +47,22 @@ public class adminScreen extends AppCompatActivity {
 
     }
 
+    public void EditData() {
+        editService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openEditDialog();
+            }
+        });
+    }
+
     public void openAddDialog(){
 
+    }
+
+    public void openEditDialog() {
+        Intent intent = new Intent(this, editServiceScreen.class);
+
+        startActivity(intent);
     }
 }
