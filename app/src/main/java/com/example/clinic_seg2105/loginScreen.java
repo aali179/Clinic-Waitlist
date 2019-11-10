@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,7 @@ public class loginScreen extends AppCompatActivity {
     private EditText username_login;
     private EditText password_login;
     private Button login;
+    Database_helper db;
 
 
     @Override
@@ -21,12 +23,37 @@ public class loginScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
 
+        db = new Database_helper(this);
+
         username_login = (EditText) findViewById(R.id.userName);
         password_login = (EditText) findViewById(R.id.userPassword);
         login = findViewById(R.id.loginButton);
 
         username_login.addTextChangedListener(loginTextWatcher);
         password_login.addTextChangedListener(loginTextWatcher);
+
+        login.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                String username = username_login.getText().toString().trim();
+                String password = password_login.getText().toString().trim();
+
+                if (username.equals("admin") && password.equals("1234")){
+                    openAdmin();
+
+                }else {
+                    boolean res = db.checkData(username, password);
+
+                    if (res) {
+                        Toast.makeText(loginScreen.this, "Success", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(loginScreen.this, "Wrong", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            }
+
+        });
 
     }
 
