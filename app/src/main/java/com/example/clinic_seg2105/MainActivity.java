@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity{
                         
                         boolean isInserted = myDb.insertData(Name.getText().toString(), Username.getText().toString(), Password.getText().toString(), person_type);
 
-                        if (isInserted == true) {
+                        if (isInserted) {
                             Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
                         } else
                             Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
