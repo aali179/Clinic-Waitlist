@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".adminScreen"/>
+        <activity android:name=".editServiceScreen"/>
         <activity android:name=".loginScreen" />
         <activity android:name=".createAccount" />
         <activity android:name=".MainActivity">
