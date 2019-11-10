@@ -24,19 +24,19 @@ public class adminScreen extends AppCompatActivity {
 
         EditData();
 
-       // addService.setOnClickListener(new View.OnClickListener() {
-         //   @Override
-           // public void onClick(View v) {
-             //   openAddDialog();
-            //}
-        //});
+        addService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAddDialog();
+            }
+        });
 
-//        editService.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openEditDialog();
-//            }
-//        });
+        editService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openEditDialog();
+            }
+        });
 //
 //        deleteService.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -57,7 +57,8 @@ public class adminScreen extends AppCompatActivity {
     }
 
     public void openAddDialog(){
-
+        addDialog ad = new addDialog();
+        ad.show(getSupportFragmentManager(), "Add");
     }
 
     public void openEditDialog() {

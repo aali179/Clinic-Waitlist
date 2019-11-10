@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Name"/>
+
+    <EditText
+        android:id="@+id/addServiceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Name"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Role"/>
+
+    <EditText
+        android:id="@+id/addServiceRole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Role"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add ID number"/>
+
+    <EditText
+        android:id="@+id/addServiceID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Add ID number"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add"/>
+
+</LinearLayout>
