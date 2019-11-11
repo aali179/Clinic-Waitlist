@@ -56,5 +56,17 @@
         android:layout_height="60dp"
         android:text="UPDATE" />
 
+    <Button
+        android:id="@+id/addServ"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:text="ADD" />
+
+    <Button
+        android:id="@+id/deleteServ"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:text="DELETE" />
+
 
 </LinearLayout>
