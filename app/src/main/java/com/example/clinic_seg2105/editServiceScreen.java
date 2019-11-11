@@ -22,6 +22,9 @@ public class editServiceScreen extends AppCompatActivity {
     // Calling an instance of the database class that stores all the information
     ServiceDBHelper myDb;
 
+    ServiceRepo repo = new ServiceRepo(this);
+
+
     // Creating EditText fields for NewName
     private EditText NewName;
     private TextView NewNamePrompt;
@@ -30,14 +33,17 @@ public class editServiceScreen extends AppCompatActivity {
 
     // Create Button field for Update
     private Button update;
+    private Button add;
+    private Button del;
 
     public static String person_type;
+    public static String service_type;
+    public String name;
 
 
     Spinner spinner2;
     Spinner spinner3;
 
-    TextView mTVservice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,9 +90,9 @@ public class editServiceScreen extends AppCompatActivity {
                 //Service selected = (Service) parent.getItemAtPosition(position);
                 //mTVservice.setText(selected.getService());
 
-                //String text = parent.getItemAtPosition(position).toString();
-                //person_type = text;
-                //Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+                String text = parent.getItemAtPosition(position).toString();
+                service_type = text;
+                Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -106,18 +112,57 @@ public class editServiceScreen extends AppCompatActivity {
         RolePrompt = findViewById(R.id.newRole);
         EditPrompt = findViewById(R.id.editChoose);
         update = (Button)findViewById(R.id.updateService);
+        add = (Button)findViewById(R.id.addServ);
+        del = (Button)findViewById(R.id.deleteServ);
 
         // We pass crrAccTextWatcher (a function) to the addTextChangedListener method to Name, Username, Password and
         // password-reenter
         //NewName.addTextChangedListener(crrAccTextWatcher);
-        populateDB();
+        //populateDB();
         loadService();
 
+        // add screen
+        if (adminScreen.screenChoice == 1) {
+            EditPrompt.setVisibility(View.INVISIBLE);
+            spinner2.setVisibility(View.INVISIBLE);
+            update.setVisibility(View.INVISIBLE);
+            del.setVisibility(View.INVISIBLE);
+        }
+
+        //edit screen
+        if (adminScreen.screenChoice == 2) {
+            add.setVisibility(View.INVISIBLE);
+            del.setVisibility(View.INVISIBLE);
+        }
+
+        //delete screen
+        if (adminScreen.screenChoice == 3) {
+            add.setVisibility(View.INVISIBLE);
+            update.setVisibility(View.INVISIBLE);
+            NewName.setVisibility(View.INVISIBLE);
+            NewNamePrompt.setVisibility(View.INVISIBLE);
+            RolePrompt.setVisibility(View.INVISIBLE);
+            spinner3.setVisibility(View.INVISIBLE);
+        }
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addService();
+            }
+        });
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 updateService();
+            }
+        });
+
+        del.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteService();
             }
         });
 
@@ -131,10 +176,47 @@ public class editServiceScreen extends AppCompatActivity {
 
     //}
 
+    public void addService() {
+        Intent intent = new Intent(this, adminScreen.class);
+
+        //deletes old service
+        //repo.delete(service_type);
+
+        //insert new service
+        Service service = new Service();
+        service.setRole(person_type);
+        service.setService(NewName.getText().toString());
+        repo.insert(service);
+
+        startActivity(intent);
+    }
+
     public void updateService() {
         Intent intent = new Intent(this, adminScreen.class);
 
-        //String sqlUpdate =
+        //deletes old service
+        repo.delete(service_type);
+
+        //insert new service
+        Service service = new Service();
+        service.setRole(person_type);
+        service.setService(NewName.getText().toString());
+        repo.insert(service);
+
+        startActivity(intent);
+    }
+
+    public void deleteService() {
+        Intent intent = new Intent(this, adminScreen.class);
+
+        //deletes old service
+        repo.delete(service_type);
+
+        //insert new service
+        //Service service = new Service();
+        //service.setRole(person_type);
+        //service.setService(NewName.getText().toString());
+        //repo.insert(service);
 
         startActivity(intent);
     }
@@ -153,8 +235,8 @@ public class editServiceScreen extends AppCompatActivity {
 
     private void populateDB(){
 
-        ServiceRepo repo = new ServiceRepo(this);
-        repo.Delete();
+        //ServiceRepo repo = new ServiceRepo(this);
+        //repo.Delete();
 
         for (Integer i=0;i<5;i++){
             Service service = new Service();

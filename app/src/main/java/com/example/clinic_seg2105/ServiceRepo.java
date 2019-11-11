@@ -39,6 +39,11 @@ public class ServiceRepo {
         return (int) service_Id;
     }
 
+    public void delete(String name) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(Service.TABLE, Service.KEY_service + "=?", new String[]{name} );
+        db.close();
+    }
 
     //Retrieve all records and populate into List<String>
     public List<String> getAll() {

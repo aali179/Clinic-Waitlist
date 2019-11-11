@@ -13,6 +13,8 @@ public class adminScreen extends AppCompatActivity {
     private Button editService;
     private Button deleteService;
 
+    public static Integer screenChoice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +24,9 @@ public class adminScreen extends AppCompatActivity {
         editService = (Button) findViewById(R.id.editServiceButton);
         deleteService = (Button) findViewById(R.id.deleteServiceButton);
 
+        AddData();
         EditData();
+        DeleteData();
 
        // addService.setOnClickListener(new View.OnClickListener() {
          //   @Override
@@ -47,6 +51,15 @@ public class adminScreen extends AppCompatActivity {
 
     }
 
+    public void AddData() {
+        addService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAddDialog();
+            }
+        });
+    }
+
     public void EditData() {
         editService.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,12 +69,35 @@ public class adminScreen extends AppCompatActivity {
         });
     }
 
-    public void openAddDialog(){
+    public void DeleteData() {
+        deleteService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDeleteDialog();
+            }
+        });
+    }
 
+    public void openAddDialog(){
+        Intent intent = new Intent(this, editServiceScreen.class);
+
+        screenChoice = 1;
+
+        startActivity(intent);
     }
 
     public void openEditDialog() {
         Intent intent = new Intent(this, editServiceScreen.class);
+
+        screenChoice = 2;
+
+        startActivity(intent);
+    }
+
+    public void openDeleteDialog() {
+        Intent intent = new Intent(this, editServiceScreen.class);
+
+        screenChoice = 3;
 
         startActivity(intent);
     }

@@ -12,6 +12,8 @@ public class ServiceDBHelper extends SQLiteOpenHelper {
     // Database Name
     private static final String DATABASE_NAME = "spinner2.db";
 
+    public static final String TABLE = "table";
+
     public ServiceDBHelper(Context context ) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         // TODO Auto-generated constructor stub
