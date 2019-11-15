@@ -12,6 +12,7 @@ public class adminScreen extends AppCompatActivity {
     private Button addService;
     private Button editService;
     private Button deleteService;
+    private Button addClinic;
 
     public static Integer screenChoice;
 
@@ -23,6 +24,7 @@ public class adminScreen extends AppCompatActivity {
         addService = (Button) findViewById(R.id.addServiceButton);
         editService = (Button) findViewById(R.id.editServiceButton);
         deleteService = (Button) findViewById(R.id.deleteServiceButton);
+        addClinic = (Button)findViewById(R.id.addClinicButton);
 
         AddData();
         EditData();
@@ -99,6 +101,11 @@ public class adminScreen extends AppCompatActivity {
 
         screenChoice = 3;
 
+        startActivity(intent);
+    }
+
+    public void addClinicPage(View v){
+        Intent intent = new Intent(this, addClinicScreen.class);
         startActivity(intent);
     }
 }

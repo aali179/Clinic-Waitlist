@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".adminScreen"/>
-        <activity android:name=".editServiceScreen"/>
+        <activity android:name=".addClinicScreen"></activity>
+        <activity android:name=".adminScreen" />
+        <activity android:name=".editServiceScreen" />
         <activity android:name=".loginScreen" />
         <activity android:name=".createAccount" />
-        <activity android:name=".addServiceScreen"/>
+        <activity android:name=".addServiceScreen" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
