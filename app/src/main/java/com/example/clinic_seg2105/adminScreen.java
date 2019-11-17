@@ -29,6 +29,7 @@ public class adminScreen extends AppCompatActivity {
         AddData();
         EditData();
         DeleteData();
+        AddClinic();
 
        // addService.setOnClickListener(new View.OnClickListener() {
          //   @Override
@@ -80,31 +81,33 @@ public class adminScreen extends AppCompatActivity {
         });
     }
 
+    public void AddClinic(){
+        addClinic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAddClinicDialog();
+            }
+        });    }
+
     public void openAddDialog(){
         Intent intent = new Intent(this, editServiceScreen.class);
-
         screenChoice = 1;
-
         startActivity(intent);
     }
 
     public void openEditDialog() {
         Intent intent = new Intent(this, editServiceScreen.class);
-
         screenChoice = 2;
-
         startActivity(intent);
     }
 
     public void openDeleteDialog() {
         Intent intent = new Intent(this, editServiceScreen.class);
-
         screenChoice = 3;
-
         startActivity(intent);
     }
 
-    public void addClinicPage(View v){
+    public void openAddClinicDialog(){
         Intent intent = new Intent(this, addClinicScreen.class);
         startActivity(intent);
     }
