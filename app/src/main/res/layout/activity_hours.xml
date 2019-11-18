@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="false"
+    android:orientation="vertical"
+    android:saveEnabled="false">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="257dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:text="Working Hours"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:filterTouchesWhenObscured="false"
+        android:focusable="auto"
+        android:focusableInTouchMode="true"
+        android:maxDate="01/01/2025"
+        android:minDate="01/01/2019" />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Setting hours for" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:text="Date"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <EditText
+        android:id="@+id/startTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="(Start time)"
+        android:inputType="time" />
+
+    <EditText
+        android:id="@+id/endTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="(End time)"
+        android:inputType="time" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="150dp"
+        android:onClick="AddHours"
+        android:text="Add hours" />
+
+</LinearLayout>
