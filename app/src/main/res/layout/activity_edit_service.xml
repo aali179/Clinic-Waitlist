@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/editChoose"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="Choose service to edit: " />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="400dp"
+        android:layout_height="60dp" />
+
+    <TextView
+        android:id="@+id/newName"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="New name:" />
+
+    <EditText
+        android:id="@+id/newNameChoice"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:gravity="center"
+        android:hint="(Username)"
+        android:textColorHint="#77A7C4"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.453" />
+
+    <TextView
+        android:id="@+id/newRole"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="New Role:" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="400dp"
+        android:layout_height="60dp" />
+
+    <Button
+        android:id="@+id/updateService"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:text="UPDATE" />
+
+    <Button
+        android:id="@+id/addServ"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:text="ADD" />
+
+    <Button
+        android:id="@+id/deleteServ"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:text="DELETE" />
+
+
+</LinearLayout>
