@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addClinicScreen"></activity>
+        <activity android:name=".patientScreen"></activity>
+        <activity android:name=".addClinicScreen" />
         <activity android:name=".adminScreen" />
         <activity android:name=".editServiceScreen" />
         <activity android:name=".loginScreen" />
