@@ -3,19 +3,28 @@ package com.example.clinic_seg2105;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class loginScreen extends AppCompatActivity {
-    private EditText username_login;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+public class loginScreen extends AppCompatActivity implements View.OnClickListener{
+    private EditText email_login;
     private EditText password_login;
-    private Button login;
-    Database_helper db;
+    private TextView goToCreateAccount;
+    private Button loginButton;
+    private FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -23,82 +32,64 @@ public class loginScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
 
-        db = new Database_helper(this);
+        email_login = (EditText) findViewById(R.id.emailLn);
+        password_login = (EditText) findViewById(R.id.passwordLn);
+        goToCreateAccount = (TextView) findViewById(R.id.goToCreateAccount);
+        loginButton = (Button) findViewById(R.id.loginButton);
 
-        username_login = (EditText) findViewById(R.id.userName);
-        password_login = (EditText) findViewById(R.id.userPassword);
-        login = findViewById(R.id.loginButton);
+        goToCreateAccount.setOnClickListener(this);
+        loginButton.setOnClickListener(this);
 
-        username_login.addTextChangedListener(loginTextWatcher);
-        password_login.addTextChangedListener(loginTextWatcher);
+        firebaseAuth = FirebaseAuth.getInstance();
+    }
 
-        login.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                String username = username_login.getText().toString().trim();
-                String password = password_login.getText().toString().trim();
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.loginButton:
+                userLogin();
+                break;
+            case R.id.goToCreateAccount:
+                Intent intent = new Intent(this, createAccount.class);
+                startActivity(intent);
+                break;
+        }
+    }
 
-                if (username.equals("admin") && password.equals("1234")){
-                    openAdmin();
+    public void userLogin(){
 
-                }else {
-                    boolean res = db.checkData(username, password);
+        String temp_email = email_login.getText().toString().trim();
+        String temp_pass = password_login.getText().toString().trim();
 
-                    if (res) {
-                        Toast.makeText(loginScreen.this, "Success", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(loginScreen.this, "Wrong", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(temp_pass)){
+            Toast.makeText(this, "Please enter a password", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(temp_email)){
+            Toast.makeText(this, "Please enter a email", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (temp_email.equals("admin@gmail.com") && temp_pass.equals("admin1234")){
+            Intent intent = new Intent(this, adminScreen.class);
+            startActivity(intent);
+        }
+
+        loginButton.setText("Signing In");
+
+        firebaseAuth.signInWithEmailAndPassword(temp_email, temp_pass)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            startActivity(new Intent(getApplicationContext(), patientScreen.class));
+                            finish();
+                        } else{
+                            loginButton.setText("Unsuccessful");
+                        }
                     }
-                }
-
-            }
-
-        });
-
+                });
     }
-
-
-
-    private TextWatcher loginTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            String username_login_string = username_login.getText().toString().trim();
-            String password_login_string = password_login.getText().toString().trim();
-
-            login.setEnabled(!username_login_string.isEmpty() && !password_login_string.isEmpty());
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-    };
-
-    public void loginPage(View view){
-        String username =  username_login.getText().toString().trim();
-        String password = password_login.getText().toString().trim();
-
-        if (username.equals("admin") && password.equals("1234")){
-            openAdmin();
-
-        }
-    }
-
-
-    public void openAdmin(){
-        Intent intent = new Intent(this, adminScreen.class);
-        username_login.getText().clear();
-        password_login.getText().clear();
-
-        startActivity(intent);
-    }
-
 
 }
