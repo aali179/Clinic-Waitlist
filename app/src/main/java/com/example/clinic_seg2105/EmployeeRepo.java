@@ -30,12 +30,10 @@ public class EmployeeRepo {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put(Employee.KEY_name, employee.getName());
         values.put(Employee.KEY_username, employee.getUsername());
         values.put(Employee.KEY_password, employee.getPassword());
-        values.put(Employee.KEY_email, employee.getEmail());
-        values.put(Employee.KEY_telephone, employee.getTelephone());
-        values.put(Employee.KEY_clinic, employee.getClinic());
-
+        //values.put(Employee.KEY_services, employee.getServices());
         // Inserting Row
         long employee_Id = db.insert(Employee.TABLE, null, values);
         db.close(); // Closing database connection
@@ -52,11 +50,10 @@ public class EmployeeRepo {
     public List<String> getAll() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery = "SELECT  " +
+                Employee.KEY_name + "," +
                 Employee.KEY_username + "," +
-                Employee.KEY_password + "," +
-                Employee.KEY_email + "," +
-                Employee.KEY_telephone + "," +
-                Employee.KEY_clinic +
+                Employee.KEY_password +
+                //Employee.KEY_services +
                 " FROM " + Employee.TABLE;
 
         List<String> employeeList = new ArrayList<String>() ;

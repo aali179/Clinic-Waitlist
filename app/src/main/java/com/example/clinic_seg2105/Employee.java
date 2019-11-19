@@ -8,15 +8,13 @@ public class Employee {
     // Labels Table Columns names
     public static final String KEY_username = "username";
     public static final String KEY_password = "password";
-    public static final String KEY_email = "email";
-    public static final String KEY_telephone = "telephone";
-    public static final String KEY_clinic = "clinic";
+    public static final String KEY_name = "name";
+    public static final String KEY_services = "services";
 
     private String username;
     private String password;
-    private String email;
-    private String telephone;
-    private String clinic;
+    private String name;
+    private Service[] services;
 
     public void setUsername(String username){
         this.username=username;
@@ -34,29 +32,37 @@ public class Employee {
         return this.password;
     }
 
-    public void setEmail(String email){
-        this.email=email;
+    public void setName(String name){
+        this.name=name;
     }
 
-    public String getEmail(){
-        return this.email;
+    public String getName(){
+        return this.name;
     }
 
-    public void setTelephone(String telephone){
-        this.telephone=telephone;
+    public Service[] getServices() {
+        return this.services;
     }
 
-    public String getTelephone(){
-        return this.telephone;
+
+    public void addService(Service service) {
+        int numService = services.length;
+        this.services[numService] = service;
     }
 
-    public void setClinic(String clinic){
-        this.clinic=clinic;
+    public void deleteService(Service service) {
+        int numService = services.length;
+
+        // deletes service from list
+        for (int i = 0; i < numService; i++) {
+            if (this.services[numService] == service) {
+                this.services[numService] = null;
+            }
+        }
+
+        // shifts services up to remove the null
     }
 
-    public String getClinic(){
-        return this.clinic;
-    }
 
 
 }
