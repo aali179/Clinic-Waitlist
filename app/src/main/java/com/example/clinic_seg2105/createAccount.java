@@ -14,27 +14,24 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
-public class createAccount extends AppCompatActivity implements View.OnClickListener{
+public class createAccount extends AppCompatActivity implements View.OnClickListener {
 
+    // Calling an instance of the database class that stores all the information
+    EmployeeDBHelper myDb;
 
-    private EditText name ,email, password, passwordRe;
+    EmployeeRepo repo = new EmployeeRepo(this);
+
+    private EditText name, email, password, passwordRe;
     private TextView signInLink;
     private Spinner spinner;
     private Button createAccountButton;
 
-    private FirebaseAuth firebaseAuth;
-    private DatabaseReference databaseReference;
-    private DatabaseReference databaseUserReference;
+    //private FirebaseAuth firebaseAuth;
+    //private DatabaseReference databaseReference;
+    //private DatabaseReference databaseUserReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +46,7 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.createAccountButton:
                 registerUser();
                 break;
@@ -60,39 +57,48 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void spinnerSetUp(){
+    private void spinnerSetUp() {
         spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.login_dropdown, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
 
-    private void initializer(){
+    private void initializer() {
         name = (EditText) findViewById(R.id.fullName);
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         passwordRe = (EditText) findViewById(R.id.passwordRe);
         createAccountButton = (Button) findViewById(R.id.createAccountButton);
         signInLink = (TextView) findViewById(R.id.signInLink);
-        firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        // firebaseAuth = FirebaseAuth.getInstance();
+        //databaseReference = FirebaseDatabase.getInstance().getReference();
 
         createAccountButton.setOnClickListener(this);
         signInLink.setOnClickListener(this);
     }
 
-    private void registerUser(){
+    private void registerUser() {
         String memberRole = spinner.getSelectedItem().toString().trim();
         String temp_name = name.getText().toString().trim();
         String temp_email = email.getText().toString().trim();
         String temp_pass = password.getText().toString().trim();
 
-        if (TextUtils.isEmpty(temp_name) || TextUtils.isEmpty(temp_email) || TextUtils.isEmpty(temp_pass)){
+        if (TextUtils.isEmpty(temp_name) || TextUtils.isEmpty(temp_email) || TextUtils.isEmpty(temp_pass)) {
             Toast.makeText(this, "Please Enter All Fields", Toast.LENGTH_LONG).show();
             return;
         }
 
-        firebaseAuth.createUserWithEmailAndPassword(temp_email, temp_pass)
+        //insert new employee
+        Employee employee = new Employee();
+        employee.setName(temp_name);
+        employee.setUsername(temp_email);
+        employee.setPassword(temp_pass);
+        repo.insert(employee);
+    }
+}
+
+        /*firebaseAuth.createUserWithEmailAndPassword(temp_email, temp_pass)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -111,10 +117,10 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
 
                     }
                 });
-    }
+    }*/
 
 
-    private void createUserFirebase(){
+   /* private void createUserFirebase(){
         String memberRole = spinner.getSelectedItem().toString().trim();
         String temp_name = name.getText().toString().trim();
         String temp_email = email.getText().toString().trim();
@@ -129,8 +135,7 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
         databaseUserReference.child(id).setValue(user);
         Toast.makeText(this, "Finished", Toast.LENGTH_LONG).show();
         finish();
-    }
+    }*/
 
 
 
-}
