@@ -1,8 +1,8 @@
 package com.example.clinic_seg2105;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,26 +17,23 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import static com.example.clinic_seg2105.GlobalVariables.*;
 
 public class addClinicScreen extends AppCompatActivity {
 
-
-    ClinicDBHelper myDb;
-
-    ClinicRepo repo = new ClinicRepo(this);
-
     private EditText phoneNumber;
     private EditText nameClinic;
-    private EditText emailAddress;
+    private EditText locationAddress;
     private Spinner insurance;
     private Spinner payment;
     private Button saveButton;
-
-    public static String insurance_type;
-    public static String payment_type;
-   // private DatabaseReference clinicDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +42,7 @@ public class addClinicScreen extends AppCompatActivity {
 
         phoneNumber = (EditText) findViewById(R.id.phoneNumber);
         nameClinic = (EditText) findViewById(R.id.nameOfClinic);
-        emailAddress = (EditText) findViewById(R.id.emailAddress);
+        locationAddress = (EditText) findViewById(R.id.locationAddress);
         insurance = (Spinner) findViewById(R.id.insurance);
         payment = (Spinner) findViewById(R.id.payment);
         saveButton = (Button) findViewById(R.id.saveButton);
@@ -62,66 +59,34 @@ public class addClinicScreen extends AppCompatActivity {
         insurance.setAdapter(insuranceAdapter);
         payment.setAdapter(paymentAdapter);
 
-        insurance.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+    }
 
-                String text = parent.getItemAtPosition(position).toString();
-                insurance_type = text;
-                Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
-            }
+    public void saveButtonFunction(View v){
+        String locAdd = locationAddress.getText().toString().trim();
+        String phoNu = phoneNumber.getText().toString().trim();
+        String nameClin = nameClinic.getText().toString().trim();
+        String ins = insurance.getSelectedItem().toString().trim();
+        String pay = payment.getSelectedItem().toString().trim();
+        Clinic clinic = new Clinic(locAdd,phoNu,nameClin,ins, pay);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        payment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                String text = parent.getItemAtPosition(position).toString();
-                payment_type = text;
-                Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        saveButton = (Button)findViewById(R.id.saveButton);
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createClinic();
-            }
-        });
-
-
+        clinic_vector.add(clinic);
 
     }
 
-    public void createClinic(){
-        //clinicDB = FirebaseDatabase.getInstance().getReference("Clinic");
 
-        Intent intent = new Intent(this, adminScreen.class);
 
-        //deletes old service
-        //repo.delete(service_type);
+    //@Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
 
-        //insert new service
-        Clinic clinic = new Clinic();
-        clinic.setName(nameClinic.getText().toString());
-        clinic.setAddress(emailAddress.getText().toString());
-        clinic.setPhone(phoneNumber.getText().toString());
-        clinic.setPayment(payment_type);
-        clinic.setInsurance(insurance_type);
-        repo.insert(clinic);
-
-        startActivity(intent);
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
     }
 
+
+//    public void onNothingSelected(AdapterView<?> arg0) {
+//        String item = parent.getItemAtPosition(0).toString();
+//        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+//    }
 }

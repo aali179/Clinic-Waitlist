@@ -1,69 +1,86 @@
 package com.example.clinic_seg2105;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-public class employeeScreen extends AppCompatActivity {
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import static com.example.clinic_seg2105.GlobalVariables.*;
 
-    public static int screenChoice;
 
-    private TextView welcomePrompt;
+public class employeeScreen extends AppCompatActivity implements View.OnClickListener {
 
-    private Button editClinicProfileButton;
-    private Button addServiceButton;
-    private Button deleteServiceButton;
-    private Button setHoursButton;
-    private Button checkHoursButton;
+    private Button clinicOptionButton;
+    private Button serviceOptionButton;
+    private Button profileOptionButton;
     private Button logoutButton;
+    Clinic test = new Clinic("dsds", "asd", "asd","asd", "asd");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_screen);
 
-        welcomePrompt = findViewById(R.id.employeeWelcome);
-
-        editClinicProfileButton = (Button) findViewById(R.id.editClinicProfileButton);
-        addServiceButton = (Button) findViewById(R.id.addServButton);
-        deleteServiceButton = (Button) findViewById(R.id.deleteServButton);
-        setHoursButton = (Button) findViewById(R.id.setHoursButton);
-        checkHoursButton = (Button) findViewById(R.id.checkoutHoursButton);
+        clinicOptionButton = (Button) findViewById(R.id.clinicOptionButon);
+        serviceOptionButton = (Button) findViewById(R.id.serviceOptionButton);
+        profileOptionButton = (Button) findViewById(R.id.profileOptionButton);
         logoutButton = (Button) findViewById(R.id.logoutButton);
 
-        addServiceButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addService();
-            }
-        });
-        deleteServiceButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteService();
-            }
-        });
+        clinicOptionButton.setOnClickListener(this);
+        serviceOptionButton.setOnClickListener(this);
+        profileOptionButton.setOnClickListener(this);
+        logoutButton.setOnClickListener(this);
+        clinic_vector.add(test);
     }
 
-    private void addService() {
-        Intent intent = new Intent(this, addDeleteServiceScreen.class);
-        screenChoice = 2;
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.clinicOptionButon:
+                clinicOptionButtonFunc();
+                break;
+            case R.id.serviceOptionButton:
+                serviceOptionFunc();
+                break;
+            case R.id.profileOptionButton:
+                profileOptionEmpFunc();
+                break;
+            case R.id.logoutButton:
+                logoutFunc();
+                break;
+        }
+
+    }
+
+    private void clinicOptionButtonFunc(){
+        Intent intent = new Intent(this, clinicOptionEmployee.class);
         startActivity(intent);
     }
 
-    private void deleteService() {
-        Intent intent = new Intent(this, addDeleteServiceScreen.class);
-        screenChoice = 3;
+    private void serviceOptionFunc(){
+        Intent intent = new Intent(this, serviceOptionEmployee.class);
         startActivity(intent);
     }
 
-    private void logoutButton(){
-        Intent intent = new Intent(this, createAccount.class);
+    private void profileOptionEmpFunc(){
+        Intent intent = new Intent(this, editEmployeeProfile.class);
         startActivity(intent);
-        finish();
     }
+
+    private void logoutFunc(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }
+
