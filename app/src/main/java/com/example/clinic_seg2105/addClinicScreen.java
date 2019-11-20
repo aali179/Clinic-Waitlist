@@ -1,5 +1,6 @@
 package com.example.clinic_seg2105;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -16,18 +17,23 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import static com.example.clinic_seg2105.GlobalVariables.*;
 
 public class addClinicScreen extends AppCompatActivity {
 
     private EditText phoneNumber;
     private EditText nameClinic;
-    private EditText emailAddress;
+    private EditText locationAddress;
     private Spinner insurance;
     private Spinner payment;
     private Button saveButton;
-    private DatabaseReference clinicDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +42,7 @@ public class addClinicScreen extends AppCompatActivity {
 
         phoneNumber = (EditText) findViewById(R.id.phoneNumber);
         nameClinic = (EditText) findViewById(R.id.nameOfClinic);
-        emailAddress = (EditText) findViewById(R.id.emailAddress);
+        locationAddress = (EditText) findViewById(R.id.locationAddress);
         insurance = (Spinner) findViewById(R.id.insurance);
         payment = (Spinner) findViewById(R.id.payment);
         saveButton = (Button) findViewById(R.id.saveButton);
@@ -53,12 +59,17 @@ public class addClinicScreen extends AppCompatActivity {
         insurance.setAdapter(insuranceAdapter);
         payment.setAdapter(paymentAdapter);
 
-
     }
 
-    public void saveButtonFunction(){
-        clinicDB = FirebaseDatabase.getInstance().getReference("Clinic");
+    public void saveButtonFunction(View v){
+        String locAdd = locationAddress.getText().toString().trim();
+        String phoNu = phoneNumber.getText().toString().trim();
+        String nameClin = nameClinic.getText().toString().trim();
+        String ins = insurance.getSelectedItem().toString().trim();
+        String pay = payment.getSelectedItem().toString().trim();
+        Clinic clinic = new Clinic(locAdd,phoNu,nameClin,ins, pay);
 
+        clinic_vector.add(clinic);
 
     }
 

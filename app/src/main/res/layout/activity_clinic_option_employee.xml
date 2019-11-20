@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".employeeScreen">
-
+    tools:context=".clinicOptionEmployee">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,31 +14,24 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Welcome"/>
+            android:text="Please select the clinic you will be working at"/>
+
+        <Spinner
+            android:id="@+id/clinicOptionSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/lel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/clinicOptionButon"
+            android:id="@+id/addClinic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Clinic Options"/>
+            android:text="Add Clinic"
+            android:onClick="addClinicEmp"/>
 
-        <Button
-            android:id="@+id/serviceOptionButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Service Options"/>
-
-        <Button
-            android:id="@+id/profileOptionButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Profile Options"/>
-
-        <Button
-            android:id="@+id/logoutButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Logout"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

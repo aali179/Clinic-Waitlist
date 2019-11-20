@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity{
 
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         if (currentUser != null){
-            // Go to either patien or employee account
+            Intent intent = new Intent (getApplicationContext(), loginScreen.class);
+            startActivity(intent);
         } else{
             Intent intent = new Intent (getApplicationContext(), loginScreen.class);
             startActivity(intent);

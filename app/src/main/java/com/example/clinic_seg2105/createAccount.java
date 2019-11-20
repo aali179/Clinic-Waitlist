@@ -15,6 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.w3c.dom.Text;
 
 public class createAccount extends AppCompatActivity implements View.OnClickListener {
@@ -29,9 +35,8 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
     private Spinner spinner;
     private Button createAccountButton;
 
-    //private FirebaseAuth firebaseAuth;
-    //private DatabaseReference databaseReference;
-    //private DatabaseReference databaseUserReference;
+    FirebaseAuth mAuth;
+    FirebaseDatabase mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +76,8 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
         passwordRe = (EditText) findViewById(R.id.passwordRe);
         createAccountButton = (Button) findViewById(R.id.createAccountButton);
         signInLink = (TextView) findViewById(R.id.signInLink);
-        // firebaseAuth = FirebaseAuth.getInstance();
-        //databaseReference = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance();
 
         createAccountButton.setOnClickListener(this);
         signInLink.setOnClickListener(this);
@@ -84,58 +89,34 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
         String temp_email = email.getText().toString().trim();
         String temp_pass = password.getText().toString().trim();
 
-        if (TextUtils.isEmpty(temp_name) || TextUtils.isEmpty(temp_email) || TextUtils.isEmpty(temp_pass)) {
+/*        if (TextUtils.isEmpty(temp_name) || TextUtils.isEmpty(temp_email) || TextUtils.isEmpty(temp_pass)) {
             Toast.makeText(this, "Please Enter All Fields", Toast.LENGTH_LONG).show();
             return;
-        }
+        }*/
+        final User user = new User(temp_name, temp_email, temp_pass, memberRole);
 
-        //insert new employee
-        Employee employee = new Employee();
-        employee.setName(temp_name);
-        employee.setUsername(temp_email);
-        employee.setPassword(temp_pass);
-        repo.insert(employee);
+        mAuth.createUserWithEmailAndPassword(temp_email, temp_pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    mDatabase.getReference("Users")
+                            .child(mAuth.getCurrentUser().getUid()).setValue(user)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+                                        finish();
+                                        startActivity(new Intent(getApplicationContext(), loginScreen.class));
+                                    } else {
+                                        Toast.makeText(createAccount.this, "Firebase Data Error", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+                } else {
+                    Toast.makeText(createAccount.this, "Database Authentification Error", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
     }
 }
-
-        /*firebaseAuth.createUserWithEmailAndPassword(temp_email, temp_pass)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(createAccount.this, "Successfully Registered", Toast.LENGTH_LONG).show();
-
-                            createUserFirebase();
-
-                            Intent intent = new Intent(getApplicationContext(), loginScreen.class);
-                            startActivity(intent);
-                            finish();
-
-                        } else{
-                            Toast.makeText(createAccount.this, "Hello", Toast.LENGTH_LONG).show();
-                        }
-
-                    }
-                });
-    }*/
-
-
-   /* private void createUserFirebase(){
-        String memberRole = spinner.getSelectedItem().toString().trim();
-        String temp_name = name.getText().toString().trim();
-        String temp_email = email.getText().toString().trim();
-        String temp_pass = password.getText().toString().trim();
-
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseUserReference = FirebaseDatabase.getInstance().getReference("Users");
-
-        FirebaseUser fUser = firebaseAuth.getCurrentUser();
-        String id = fUser.getUid();
-        User user = new User(id, temp_name, temp_email, memberRole);
-        databaseUserReference.child(id).setValue(user);
-        Toast.makeText(this, "Finished", Toast.LENGTH_LONG).show();
-        finish();
-    }*/
-
-
-
