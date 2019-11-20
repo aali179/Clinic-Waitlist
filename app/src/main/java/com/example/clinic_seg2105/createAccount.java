@@ -35,8 +35,10 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
     private Spinner spinner;
     private Button createAccountButton;
 
-    FirebaseAuth mAuth;
-    FirebaseDatabase mDatabase;
+
+    //private FirebaseAuth firebaseAuth;
+    //private DatabaseReference databaseReference;
+    //private DatabaseReference databaseUserReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
         spinnerSetUp();
 
         initializer();
+
+        //loadDatabase();
 
     }
 
@@ -84,39 +88,31 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
     }
 
     private void registerUser() {
+        Intent intent = new Intent(this, loginScreen.class);
+
+
         String memberRole = spinner.getSelectedItem().toString().trim();
         String temp_name = name.getText().toString().trim();
         String temp_email = email.getText().toString().trim();
         String temp_pass = password.getText().toString().trim();
 
-/*        if (TextUtils.isEmpty(temp_name) || TextUtils.isEmpty(temp_email) || TextUtils.isEmpty(temp_pass)) {
+       if (TextUtils.isEmpty(temp_name) || TextUtils.isEmpty(temp_email) || TextUtils.isEmpty(temp_pass)) {
             Toast.makeText(this, "Please Enter All Fields", Toast.LENGTH_LONG).show();
             return;
-        }*/
-        final User user = new User(temp_name, temp_email, temp_pass, memberRole);
 
-        mAuth.createUserWithEmailAndPassword(temp_email, temp_pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    mDatabase.getReference("Users")
-                            .child(mAuth.getCurrentUser().getUid()).setValue(user)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()){
-                                        finish();
-                                        startActivity(new Intent(getApplicationContext(), loginScreen.class));
-                                    } else {
-                                        Toast.makeText(createAccount.this, "Firebase Data Error", Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            });
-                } else {
-                    Toast.makeText(createAccount.this, "Database Authentification Error", Toast.LENGTH_LONG).show();
-                }
+        }
 
-            }
-        });
+        //if (memberRole == "Employee") {
+            //insert new employee
+            Employee employee = new Employee();
+            employee.setName(temp_name);
+            employee.setUsername(temp_email);
+            employee.setPassword(temp_pass);
+            repo.insert(employee);
+        //}
+
+        startActivity(intent);
+
     }
+
 }

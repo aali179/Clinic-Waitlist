@@ -55,7 +55,7 @@ public class editServiceScreen extends AppCompatActivity {
         ///////////////////////////////////////////////////////////// SPINNER 3 /////////////////////////////////////////
         spinner3 = (Spinner) findViewById(R.id.spinner3);
         // Using login_dropdown (check string.xml) to allow user to select from dropdown menu
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.login_dropdown, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.service_dropdown, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner3.setAdapter(adapter);
         //When user clicks the dropdown menu, either onItemSelected will activate or onNothingSelected (nothing happens)
