@@ -26,6 +26,11 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
     private Button loginButton;
     private FirebaseAuth firebaseAuth;
 
+    // Calling an instance of the database class that stores all the information
+    EmployeeDBHelper myDb;
+
+    EmployeeRepo repo = new EmployeeRepo(this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,20 +81,27 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
             startActivity(intent);
         }
 
-        loginButton.setText("Signing In");
+        if (repo.login(temp_email, temp_pass) == true) {
+            Intent intent = new Intent(this, employeeScreen.class);
+            loginButton.setText("Signing In");
+            startActivity(intent);
+        }
 
-        firebaseAuth.signInWithEmailAndPassword(temp_email, temp_pass)
+        //loginButton.setText("Signing In");
+
+        /*firebaseAuth.signInWithEmailAndPassword(temp_email, temp_pass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            startActivity(new Intent(getApplicationContext(), patientScreen.class));
+                            startActivity(new Intent(getApplicationContext(), employeeScreen.class));
                             finish();
                         } else{
                             loginButton.setText("Unsuccessful");
                         }
                     }
-                });
+                });*/
+
     }
 
 }

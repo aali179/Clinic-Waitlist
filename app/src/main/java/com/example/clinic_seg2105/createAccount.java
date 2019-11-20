@@ -29,6 +29,7 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
     private Spinner spinner;
     private Button createAccountButton;
 
+
     //private FirebaseAuth firebaseAuth;
     //private DatabaseReference databaseReference;
     //private DatabaseReference databaseUserReference;
@@ -41,6 +42,8 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
         spinnerSetUp();
 
         initializer();
+
+        //loadDatabase();
 
     }
 
@@ -79,6 +82,9 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
     }
 
     private void registerUser() {
+        Intent intent = new Intent(this, loginScreen.class);
+
+
         String memberRole = spinner.getSelectedItem().toString().trim();
         String temp_name = name.getText().toString().trim();
         String temp_email = email.getText().toString().trim();
@@ -89,13 +95,18 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        //insert new employee
-        Employee employee = new Employee();
-        employee.setName(temp_name);
-        employee.setUsername(temp_email);
-        employee.setPassword(temp_pass);
-        repo.insert(employee);
+        //if (memberRole == "Employee") {
+            //insert new employee
+            Employee employee = new Employee();
+            employee.setName(temp_name);
+            employee.setUsername(temp_email);
+            employee.setPassword(temp_pass);
+            repo.insert(employee);
+        //}
+
+        startActivity(intent);
     }
+
 }
 
         /*firebaseAuth.createUserWithEmailAndPassword(temp_email, temp_pass)

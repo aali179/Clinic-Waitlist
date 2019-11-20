@@ -33,7 +33,6 @@ public class EmployeeRepo {
         values.put(Employee.KEY_name, employee.getName());
         values.put(Employee.KEY_username, employee.getUsername());
         values.put(Employee.KEY_password, employee.getPassword());
-        //values.put(Employee.KEY_services, employee.getServices());
         // Inserting Row
         long employee_Id = db.insert(Employee.TABLE, null, values);
         db.close(); // Closing database connection
@@ -46,6 +45,31 @@ public class EmployeeRepo {
         db.close();
     }
 
+    public boolean login(String email, String password) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery = "SELECT  " +
+                Employee.KEY_name + "," +
+                Employee.KEY_username + "," +
+                Employee.KEY_password +
+                " FROM " + Employee.TABLE + " WHERE " + Employee.KEY_username + " =?";
+        List<String> passwordList = new ArrayList<String>() ;
+        Cursor cursor = db.rawQuery(selectQuery, new String[] {email});
+        Integer i =0;
+        if (cursor.moveToFirst()) {
+            do {
+                passwordList.add(i,cursor.getString(cursor.getColumnIndex(Employee.KEY_password)));
+                i+=1;
+            } while (cursor.moveToNext());
+        }
+
+        if (passwordList.contains(password)) {
+            return true;
+        }
+
+        return false;
+
+    }
+
     //Retrieve all records and populate into List<String>
     public List<String> getAll() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -53,7 +77,6 @@ public class EmployeeRepo {
                 Employee.KEY_name + "," +
                 Employee.KEY_username + "," +
                 Employee.KEY_password +
-                //Employee.KEY_services +
                 " FROM " + Employee.TABLE;
 
         List<String> employeeList = new ArrayList<String>() ;

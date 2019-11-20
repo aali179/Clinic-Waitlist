@@ -27,7 +27,6 @@ public class EmployeeDBHelper extends SQLiteOpenHelper {
                 + Employee.KEY_name + " TEXT, "
                 + Employee.KEY_username + " TEXT, "
                 + Employee.KEY_password + " TEXT)";
-                //+ Employee.KEY_services + " SERVICE)";
 
         db.execSQL(CREATE_TABLE_EMPLOYEE);
 
