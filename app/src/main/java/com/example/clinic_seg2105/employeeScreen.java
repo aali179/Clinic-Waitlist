@@ -15,16 +15,19 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import static com.example.clinic_seg2105.GlobalVariables.*;
+//import static com.example.clinic_seg2105.GlobalVariables.*;
 
 
 public class employeeScreen extends AppCompatActivity implements View.OnClickListener {
 
     private Button clinicOptionButton;
-    private Button serviceOptionButton;
+    private Button addServiceBTN;
+    private Button deleteServiceBTN;
     private Button profileOptionButton;
     private Button logoutButton;
     Clinic test = new Clinic("dsds", "asd", "asd","asd", "asd");
+
+    public static int screenChoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +35,17 @@ public class employeeScreen extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_employee_screen);
 
         clinicOptionButton = (Button) findViewById(R.id.clinicOptionButon);
-        serviceOptionButton = (Button) findViewById(R.id.serviceOptionButton);
+        addServiceBTN = (Button) findViewById(R.id.addServiceBTN);
+        deleteServiceBTN = (Button) findViewById(R.id.deleteServiceBTN);
         profileOptionButton = (Button) findViewById(R.id.profileOptionButton);
         logoutButton = (Button) findViewById(R.id.logoutButton);
 
         clinicOptionButton.setOnClickListener(this);
-        serviceOptionButton.setOnClickListener(this);
+        addServiceBTN.setOnClickListener(this);
+        deleteServiceBTN.setOnClickListener(this);
         profileOptionButton.setOnClickListener(this);
         logoutButton.setOnClickListener(this);
-        clinic_vector.add(test);
+        //clinic_vector.add(test);
     }
 
     @Override
@@ -49,8 +54,11 @@ public class employeeScreen extends AppCompatActivity implements View.OnClickLis
             case R.id.clinicOptionButon:
                 clinicOptionButtonFunc();
                 break;
-            case R.id.serviceOptionButton:
-                serviceOptionFunc();
+            case R.id.addServiceBTN:
+                addServiceFunc();
+                break;
+            case R.id.deleteServiceBTN:
+                deleteServiceFunc();
                 break;
             case R.id.profileOptionButton:
                 profileOptionEmpFunc();
@@ -67,8 +75,15 @@ public class employeeScreen extends AppCompatActivity implements View.OnClickLis
         startActivity(intent);
     }
 
-    private void serviceOptionFunc(){
-        Intent intent = new Intent(this, serviceOptionEmployee.class);
+    private void addServiceFunc(){
+        Intent intent = new Intent(this, addDeleteServiceScreen.class);
+        screenChoice = 2;
+        startActivity(intent);
+    }
+
+    private void deleteServiceFunc(){
+        Intent intent = new Intent(this, addDeleteServiceScreen.class);
+        screenChoice = 3;
         startActivity(intent);
     }
 

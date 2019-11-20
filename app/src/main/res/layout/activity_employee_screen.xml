@@ -24,10 +24,16 @@
             android:text="Clinic Options"/>
 
         <Button
-            android:id="@+id/serviceOptionButton"
+            android:id="@+id/addServiceBTN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Service Options"/>
+            android:text="Add Service"/>
+
+        <Button
+            android:id="@+id/deleteServiceBTN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete Service"/>
 
         <Button
             android:id="@+id/profileOptionButton"
