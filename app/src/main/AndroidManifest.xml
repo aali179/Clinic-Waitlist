@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".employeeScreen"></activity>
+        <activity android:name=".editEmployeeProfile"></activity>
+        <activity android:name=".serviceOptionEmployee" />
+        <activity android:name=".clinicOptionEmployee" />
+        <activity android:name=".employeeScreen" />
         <activity android:name=".addClinicScreen" />
         <activity android:name=".adminScreen" />
         <activity android:name=".editServiceScreen" />
