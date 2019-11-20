@@ -16,6 +16,11 @@ import java.util.List;
 
 public class addDeleteServiceScreen extends AppCompatActivity {
 
+    // Calling an instance of the database class that stores all the information
+    EmployeeServiceDBHelper myDb;
+
+    EmployeeServiceRepo repo = new EmployeeServiceRepo(this);
+
     private TextView addDeletePrompt;
     private Button addBTN;
     private Button delBTN;
@@ -57,8 +62,6 @@ public class addDeleteServiceScreen extends AppCompatActivity {
             }
         });
 
-        loadService();
-
         ////////////////////////////////////////////////// INITIALIZATION ////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //just some initialization
@@ -69,12 +72,14 @@ public class addDeleteServiceScreen extends AppCompatActivity {
         // add screen
         if (employeeScreen.screenChoice == 2) {
             delBTN.setVisibility(View.INVISIBLE);
+            loadServicesToAdd();
             addDeletePrompt.setText("Choose service to add to profile: ");
         }
 
         // add screen
         if (employeeScreen.screenChoice == 3) {
             addBTN.setVisibility(View.INVISIBLE);
+            loadServicesToDelete();
             addDeletePrompt.setText("Choose service to delete from profile: ");
         }
 
@@ -97,7 +102,7 @@ public class addDeleteServiceScreen extends AppCompatActivity {
 
     }
 
-    private void loadService() {
+    private void loadServicesToAdd() {
         ArrayAdapter<String> spinnerAdapter;
         ServiceRepo db = new ServiceRepo(getApplicationContext());
         List<String> services = db.getAll();
@@ -109,11 +114,26 @@ public class addDeleteServiceScreen extends AppCompatActivity {
 
     }
 
+    private void loadServicesToDelete() {
+        ArrayAdapter<String> spinnerAdapter;
+        EmployeeServiceRepo db = new EmployeeServiceRepo(getApplicationContext());
+        List<String> services = db.getAll(loginScreen.activeUser);
+        spinnerAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, services);
+        serviceSpinner.setAdapter(spinnerAdapter);
+
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+    }
+
     public void addService() {
         Intent intent = new Intent(this, employeeScreen.class);
 
-        //deletes old service
-        //repo.delete(service_type);
+        //adds service
+        EmployeeService employeeService = new EmployeeService();
+        employeeService.setUsername(loginScreen.activeUser);
+        employeeService.setService(service_type);
+        repo.insert(employeeService);
 
         startActivity(intent);
     }
@@ -122,7 +142,7 @@ public class addDeleteServiceScreen extends AppCompatActivity {
         Intent intent = new Intent(this, employeeScreen.class);
 
         //deletes old service
-        //repo.delete(service_type);
+        repo.delete(loginScreen.activeUser, service_type);
 
         startActivity(intent);
     }

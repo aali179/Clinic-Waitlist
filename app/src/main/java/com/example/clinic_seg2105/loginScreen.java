@@ -26,6 +26,8 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
     private Button loginButton;
     private FirebaseAuth firebaseAuth;
 
+    public static String activeUser;
+
     // Calling an instance of the database class that stores all the information
     EmployeeDBHelper myDb;
 
@@ -83,24 +85,11 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
 
         if (repo.login(temp_email, temp_pass) == true) {
             Intent intent = new Intent(this, employeeScreen.class);
+            activeUser = temp_email;
             loginButton.setText("Signing In");
             startActivity(intent);
         }
 
-        //loginButton.setText("Signing In");
-
-        /*firebaseAuth.signInWithEmailAndPassword(temp_email, temp_pass)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            startActivity(new Intent(getApplicationContext(), employeeScreen.class));
-                            finish();
-                        } else{
-                            loginButton.setText("Unsuccessful");
-                        }
-                    }
-                });*/
 
     }
 
