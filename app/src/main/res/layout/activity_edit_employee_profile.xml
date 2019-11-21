@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addClinicScreen">
+    tools:context=".editEmployeeProfile">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,64 +12,84 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/employeeInfoPrompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add New Clinic"
-            android:gravity="center"
-            android:paddingTop="@android:dimen/notification_large_icon_height"/>
+            android:text="Enter Employee Information: "
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/addressPrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address: "
+            android:gravity="center"/>
 
 
         <EditText
-            android:id="@+id/locationAddress"
+            android:id="@+id/locationEntry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Address"
             android:gravity="center"/>
 
+        <TextView
+            android:id="@+id/phoneNumberPrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone Number: "
+            android:gravity="center"/>
+
         <EditText
-            android:id="@+id/phoneNumber"
+            android:id="@+id/phoneNumberEntry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="(***) *** ***"
             android:gravity="center"/>
 
-        <EditText
-            android:id="@+id/nameOfClinic"
+        <TextView
+            android:id="@+id/nameOfClinicPrompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name of Clinic"
+            android:text="Choose A Clinic: "
             android:gravity="center"/>
 
+        <Spinner
+            android:id="@+id/clinicSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"/>
+
         <TextView
+            android:id="@+id/insurancePrompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Insurance Type"
             android:gravity="center"/>
 
         <Spinner
-            android:id="@+id/insurance"
+            android:id="@+id/insuranceSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:spinnerMode="dropdown"/>
 
         <TextView
+            android:id="@+id/paymentPrompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Payment Methods Accepted"
             android:gravity="center"/>
         <Spinner
-            android:id="@+id/payment"
+            android:id="@+id/paymentSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:spinnerMode="dropdown"/>
         <Button
-            android:id="@+id/saveButton"
+            android:id="@+id/saveInfoButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:text="Save"/>
+            android:text="SAVE"/>
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

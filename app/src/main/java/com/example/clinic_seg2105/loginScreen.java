@@ -18,13 +18,22 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class loginScreen extends AppCompatActivity implements View.OnClickListener{
     private EditText email_login;
     private EditText password_login;
     private TextView goToCreateAccount;
     private Button loginButton;
-    private FirebaseAuth firebaseAuth;
+
+    private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
+    private DatabaseReference mDatabase;
 
     public static String activeUser;
 
@@ -47,7 +56,9 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
         goToCreateAccount.setOnClickListener(this);
         loginButton.setOnClickListener(this);
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
     @Override
@@ -79,6 +90,7 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
         }
 
         if (temp_email.equals("admin@gmail.com") && temp_pass.equals("admin1234")){
+            finish();
             Intent intent = new Intent(this, adminScreen.class);
             startActivity(intent);
         }
@@ -90,6 +102,15 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
             startActivity(intent);
         }
 
+    }
+
+    private void openEmployeeScreen(){
+        finish();
+        Intent intent = new Intent(this, employeeScreen.class);
+        startActivity(intent);
+    }
+
+    private void openPatientScreen(){
 
     }
 

@@ -33,6 +33,11 @@ public class EmployeeRepo {
         values.put(Employee.KEY_name, employee.getName());
         values.put(Employee.KEY_username, employee.getUsername());
         values.put(Employee.KEY_password, employee.getPassword());
+        values.put(Employee.KEY_clinic, employee.getClinic());
+        values.put(Employee.KEY_address, employee.getAddress());
+        values.put(Employee.KEY_phone, employee.getPhone());
+        values.put(Employee.KEY_payment, employee.getPayment());
+        values.put(Employee.KEY_insurance, employee.getInsurance());
         // Inserting Row
         long employee_Id = db.insert(Employee.TABLE, null, values);
         db.close(); // Closing database connection
@@ -50,7 +55,12 @@ public class EmployeeRepo {
         String selectQuery = "SELECT  " +
                 Employee.KEY_name + "," +
                 Employee.KEY_username + "," +
-                Employee.KEY_password +
+                Employee.KEY_password + "," +
+                Employee.KEY_clinic + "," +
+                Employee.KEY_address + "," +
+                Employee.KEY_phone + "," +
+                Employee.KEY_payment + "," +
+                Employee.KEY_insurance +
                 " FROM " + Employee.TABLE + " WHERE " + Employee.KEY_username + " =?";
         List<String> passwordList = new ArrayList<String>() ;
         Cursor cursor = db.rawQuery(selectQuery, new String[] {email});
@@ -76,7 +86,12 @@ public class EmployeeRepo {
         String selectQuery = "SELECT  " +
                 Employee.KEY_name + "," +
                 Employee.KEY_username + "," +
-                Employee.KEY_password +
+                Employee.KEY_password + "," +
+                Employee.KEY_clinic + "," +
+                Employee.KEY_address + "," +
+                Employee.KEY_phone + "," +
+                Employee.KEY_payment + "," +
+                Employee.KEY_insurance +
                 " FROM " + Employee.TABLE;
 
         List<String> employeeList = new ArrayList<String>() ;

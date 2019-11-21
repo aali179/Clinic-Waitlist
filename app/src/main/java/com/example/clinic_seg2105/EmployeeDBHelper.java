@@ -26,7 +26,12 @@ public class EmployeeDBHelper extends SQLiteOpenHelper {
         String CREATE_TABLE_EMPLOYEE = "CREATE TABLE " + Employee.TABLE  + "("
                 + Employee.KEY_name + " TEXT, "
                 + Employee.KEY_username + " TEXT, "
-                + Employee.KEY_password + " TEXT)";
+                + Employee.KEY_password + " TEXT, "
+                + Employee.KEY_clinic + " TEXT, "
+                + Employee.KEY_address + " TEXT, "
+                + Employee.KEY_phone + " TEXT, "
+                + Employee.KEY_payment + " TEXT, "
+                + Employee.KEY_insurance + " TEXT)";
 
         db.execSQL(CREATE_TABLE_EMPLOYEE);
 

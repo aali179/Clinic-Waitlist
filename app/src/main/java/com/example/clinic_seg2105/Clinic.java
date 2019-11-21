@@ -58,30 +58,5 @@ public class Clinic {
         return this.payment;
     }
 
-   /* public Service[] getServices() {
-        return this.services;
-    }
-
-
-    public void addService(Service service) {
-        int numService = services.length;
-        this.services[numService] = service;
-    }
-
-    public void deleteService(Service service) {
-        int numService = services.length;
-
-        // deletes service from list
-        for (int i = 0; i < numService; i++) {
-            if (this.services[numService] == service) {
-                this.services[numService] = null;
-            }
-        }
-
-        // shifts services up to remove the null
-    }
-
-*/
-
 }
 

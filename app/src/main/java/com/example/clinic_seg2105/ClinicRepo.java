@@ -76,4 +76,33 @@ public class ClinicRepo {
         return clinicList;
 
     }
+
+    public List<String> getAutofill(String clnc) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery = "SELECT  " +
+                Clinic.KEY_name + "," +
+                Clinic.KEY_address + "," +
+                Clinic.KEY_phone + "," +
+                Clinic.KEY_payment + "," +
+                Clinic.KEY_insurance +
+                " FROM " + Clinic.TABLE + " WHERE " + Clinic.KEY_name + " =?";
+
+        List<String> clinicList = new ArrayList<String>() ;
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{clnc});
+        Integer i=0;
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                clinicList.add(i,cursor.getString(cursor.getColumnIndex(Clinic.KEY_address)));
+                i+=1;
+                clinicList.add(i,cursor.getString(cursor.getColumnIndex(Clinic.KEY_phone)));
+                i+=1;
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return clinicList;
+
+    }
 }
