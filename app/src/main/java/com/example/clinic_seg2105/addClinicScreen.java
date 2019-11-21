@@ -3,6 +3,7 @@ package com.example.clinic_seg2105;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +36,11 @@ public class addClinicScreen extends AppCompatActivity {
     private Spinner payment;
     private Button saveButton;
 
+    // Calling an instance of the database class that stores all the information
+    ClinicDBHelper myDb;
+
+    ClinicRepo repo = new ClinicRepo(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,18 +65,33 @@ public class addClinicScreen extends AppCompatActivity {
         insurance.setAdapter(insuranceAdapter);
         payment.setAdapter(paymentAdapter);
 
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addClinic();
+            }
+        });
+
     }
 
-    public void saveButtonFunction(View v){
+    public void addClinic(){
+        Intent intent = new Intent(this, adminScreen.class);
+
         String locAdd = locationAddress.getText().toString().trim();
         String phoNu = phoneNumber.getText().toString().trim();
         String nameClin = nameClinic.getText().toString().trim();
         String ins = insurance.getSelectedItem().toString().trim();
         String pay = payment.getSelectedItem().toString().trim();
-        Clinic clinic = new Clinic(locAdd,phoNu,nameClin,ins, pay);
 
-        clinic_vector.add(clinic);
+        Clinic clinic = new Clinic();
+        clinic.setAddress(locAdd);
+        clinic.setPhone(phoNu);
+        clinic.setName(nameClin);
+        clinic.setInsurance(ins);
+        clinic.setPayment(pay);
+        repo.insert(clinic);
 
+        startActivity(intent);
     }
 
 

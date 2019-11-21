@@ -35,6 +35,8 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
     private FirebaseUser mUser;
     private DatabaseReference mDatabase;
 
+    public static String activeUser;
+
     // Calling an instance of the database class that stores all the information
     EmployeeDBHelper myDb;
 
@@ -95,6 +97,7 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
 
         if (repo.login(temp_email, temp_pass) == true) {
             Intent intent = new Intent(this, employeeScreen.class);
+            activeUser = temp_email;
             loginButton.setText("Signing In");
             startActivity(intent);
         }

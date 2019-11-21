@@ -80,8 +80,8 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
         passwordRe = (EditText) findViewById(R.id.passwordRe);
         createAccountButton = (Button) findViewById(R.id.createAccountButton);
         signInLink = (TextView) findViewById(R.id.signInLink);
-        mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance();
+       // mAuth = FirebaseAuth.getInstance();
+        //mDatabase = FirebaseDatabase.getInstance();
 
         createAccountButton.setOnClickListener(this);
         signInLink.setOnClickListener(this);
@@ -108,6 +108,11 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
             employee.setName(temp_name);
             employee.setUsername(temp_email);
             employee.setPassword(temp_pass);
+            employee.setClinic(null);
+            employee.setAddress(null);
+            employee.setPhone(null);
+            employee.setPayment(null);
+            employee.setInsurance(null);
             repo.insert(employee);
         //}
 

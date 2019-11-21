@@ -15,6 +15,7 @@
         <activity android:name=".employeeScreen" />
         <activity android:name=".addClinicScreen" />
         <activity android:name=".adminScreen" />
+        <activity android:name=".addDeleteServiceScreen"/>
         <activity android:name=".editServiceScreen" />
         <activity android:name=".loginScreen" />
         <activity android:name=".createAccount" />

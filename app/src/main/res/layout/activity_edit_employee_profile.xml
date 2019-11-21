@@ -12,14 +12,84 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/employeeInfoPrompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Welcome Employee"/>
+            android:text="Enter Employee Information: "
+            android:gravity="center"/>
 
-        <Button
+        <TextView
+            android:id="@+id/addressPrompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="add services"/>
+            android:text="Address: "
+            android:gravity="center"/>
+
+
+        <EditText
+            android:id="@+id/locationEntry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Address"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/phoneNumberPrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone Number: "
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/phoneNumberEntry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="(***) *** ***"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/nameOfClinicPrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose A Clinic: "
+            android:gravity="center"/>
+
+        <Spinner
+            android:id="@+id/clinicSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"/>
+
+        <TextView
+            android:id="@+id/insurancePrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Insurance Type"
+            android:gravity="center"/>
+
+        <Spinner
+            android:id="@+id/insuranceSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:spinnerMode="dropdown"/>
+
+        <TextView
+            android:id="@+id/paymentPrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Payment Methods Accepted"
+            android:gravity="center"/>
+        <Spinner
+            android:id="@+id/paymentSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"/>
+        <Button
+            android:id="@+id/saveInfoButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

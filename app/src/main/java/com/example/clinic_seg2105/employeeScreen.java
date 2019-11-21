@@ -25,7 +25,7 @@ public class employeeScreen extends AppCompatActivity implements View.OnClickLis
     private Button deleteServiceBTN;
     private Button profileOptionButton;
     private Button logoutButton;
-    Clinic test = new Clinic("dsds", "asd", "asd","asd", "asd");
+    //Clinic test = new Clinic("dsds", "asd", "asd","asd", "asd");
 
     public static int screenChoice;
 

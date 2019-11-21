@@ -89,8 +89,8 @@ public class clinicOptionEmployee extends AppCompatActivity {
             List<String> spinnerArray = new ArrayList<String>();
 
             for (int i = 0; i < clinic_vector.size(); i++) {
-                String name = (clinic_vector.elementAt(i)).getNameClinic().trim();
-                spinnerArray.add(name);
+              //  String name = (clinic_vector.elementAt(i)).getNameClinic().trim();
+                //spinnerArray.add(name);
             }
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
