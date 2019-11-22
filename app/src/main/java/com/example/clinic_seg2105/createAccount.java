@@ -87,35 +87,42 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
     }
 
     private void registerUser() {
-        Intent intent = new Intent(this, loginScreen.class);
+
 
         int memberRole = spinner.getSelectedItemPosition();
         String temp_name = name.getText().toString().trim();
         String temp_email = email.getText().toString().trim();
         String temp_pass = password.getText().toString().trim();
 
-       if (TextUtils.isEmpty(temp_name) || TextUtils.isEmpty(temp_email) || TextUtils.isEmpty(temp_pass)) {
+        if (TextUtils.isEmpty(temp_name) || TextUtils.isEmpty(temp_email) || TextUtils.isEmpty(temp_pass)) {
             Toast.makeText(this, "Please Enter All Fields", Toast.LENGTH_LONG).show();
             return;
 
         }
-        if (memberRole == 1) {
-            //insert new employee
 
-            Employee employee = new Employee();
-            employee.setName(temp_name);
-            employee.setUsername(temp_email);
-            employee.setPassword(temp_pass);
-            employee.setClinic(null);
-            employee.setAddress(null);
-            employee.setPhone(null);
-            employee.setPayment(null);
-            employee.setInsurance(null);
-            repo.insert(employee);
+        if (temp_pass.equals(passwordRe.getText().toString().trim())) {
+
+            if (memberRole == 1) {
+                //insert new employee
+
+                Employee employee = new Employee();
+                employee.setName(temp_name);
+                employee.setUsername(temp_email);
+                employee.setPassword(temp_pass);
+                employee.setClinic(null);
+                employee.setAddress(null);
+                employee.setPhone(null);
+                employee.setPayment(null);
+                employee.setInsurance(null);
+                repo.insert(employee);
+
+                Intent intent = new Intent(this, loginScreen.class);
+                startActivity(intent);
+            }
+
+        } else{
+            Toast.makeText(this, "Passwords don't match", Toast.LENGTH_LONG).show();
         }
 
-        startActivity(intent);
-
     }
-
 }

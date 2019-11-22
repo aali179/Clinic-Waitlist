@@ -100,6 +100,8 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
             activeUser = temp_email;
             loginButton.setText("Signing In");
             startActivity(intent);
+        } else{
+            Toast.makeText(this, "Wrong Credentials, please try again", Toast.LENGTH_LONG).show();
         }
 
     }
