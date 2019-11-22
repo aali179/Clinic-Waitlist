@@ -15,37 +15,38 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Welcome"/>
 
         <Button
             android:id="@+id/clinicOptionButon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Clinic Options"/>
+            android:text="CLINIC OPTIONS"/>
 
         <Button
             android:id="@+id/addServiceBTN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Service"/>
+            android:text="ADD SERVICE"/>
 
         <Button
             android:id="@+id/deleteServiceBTN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Delete Service"/>
+            android:text="DELETE SERVICE"/>
 
         <Button
             android:id="@+id/profileOptionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Profile Options"/>
+            android:text="EDIT PROFILE"/>
 
         <Button
             android:id="@+id/logoutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Logout"/>
+            android:text="LOG OUT"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

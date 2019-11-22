@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -80,8 +81,6 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
         passwordRe = (EditText) findViewById(R.id.passwordRe);
         createAccountButton = (Button) findViewById(R.id.createAccountButton);
         signInLink = (TextView) findViewById(R.id.signInLink);
-       // mAuth = FirebaseAuth.getInstance();
-        //mDatabase = FirebaseDatabase.getInstance();
 
         createAccountButton.setOnClickListener(this);
         signInLink.setOnClickListener(this);
@@ -90,8 +89,7 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
     private void registerUser() {
         Intent intent = new Intent(this, loginScreen.class);
 
-
-        String memberRole = spinner.getSelectedItem().toString().trim();
+        int memberRole = spinner.getSelectedItemPosition();
         String temp_name = name.getText().toString().trim();
         String temp_email = email.getText().toString().trim();
         String temp_pass = password.getText().toString().trim();
@@ -101,9 +99,9 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
             return;
 
         }
-
-        //if (memberRole == "Employee") {
+        if (memberRole == 1) {
             //insert new employee
+
             Employee employee = new Employee();
             employee.setName(temp_name);
             employee.setUsername(temp_email);
@@ -114,7 +112,7 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
             employee.setPayment(null);
             employee.setInsurance(null);
             repo.insert(employee);
-        //}
+        }
 
         startActivity(intent);
 
