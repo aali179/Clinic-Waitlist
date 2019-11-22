@@ -19,6 +19,19 @@
             android:gravity="center"/>
 
         <TextView
+            android:id="@+id/nameOfClinicPrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose A Clinic: "
+            android:gravity="center"/>
+
+        <Spinner
+            android:id="@+id/clinicSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"/>
+
+        <TextView
             android:id="@+id/addressPrompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,19 +59,6 @@
             android:layout_height="wrap_content"
             android:hint="(***) *** ***"
             android:gravity="center"/>
-
-        <TextView
-            android:id="@+id/nameOfClinicPrompt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Choose A Clinic: "
-            android:gravity="center"/>
-
-        <Spinner
-            android:id="@+id/clinicSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"/>
 
         <TextView
             android:id="@+id/insurancePrompt"

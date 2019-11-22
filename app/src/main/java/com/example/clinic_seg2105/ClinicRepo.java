@@ -97,6 +97,10 @@ public class ClinicRepo {
                 i+=1;
                 clinicList.add(i,cursor.getString(cursor.getColumnIndex(Clinic.KEY_phone)));
                 i+=1;
+                clinicList.add(i,cursor.getString(cursor.getColumnIndex(Clinic.KEY_payment)));
+                i+=1;
+                clinicList.add(i,cursor.getString(cursor.getColumnIndex(Clinic.KEY_insurance)));
+                i+=1;
             } while (cursor.moveToNext());
         }
 

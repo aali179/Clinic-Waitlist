@@ -50,6 +50,181 @@ public class EmployeeRepo {
         db.close();
     }
 
+    public String getPassword(String email) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery = "SELECT  " +
+                Employee.KEY_name + "," +
+                Employee.KEY_username + "," +
+                Employee.KEY_password + "," +
+                Employee.KEY_clinic + "," +
+                Employee.KEY_address + "," +
+                Employee.KEY_phone + "," +
+                Employee.KEY_payment + "," +
+                Employee.KEY_insurance +
+                " FROM " + Employee.TABLE + " WHERE " + Employee.KEY_username + " =?";
+        List<String> passwordList = new ArrayList<String>() ;
+        Cursor cursor = db.rawQuery(selectQuery, new String[] {email});
+        Integer i =0;
+        if (cursor.moveToFirst()) {
+            do {
+                passwordList.add(i,cursor.getString(cursor.getColumnIndex(Employee.KEY_password)));
+                i+=1;
+            } while (cursor.moveToNext());
+        }
+
+        return passwordList.get(0);
+    }
+
+    public String getName(String email) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery = "SELECT  " +
+                Employee.KEY_name + "," +
+                Employee.KEY_username + "," +
+                Employee.KEY_password + "," +
+                Employee.KEY_clinic + "," +
+                Employee.KEY_address + "," +
+                Employee.KEY_phone + "," +
+                Employee.KEY_payment + "," +
+                Employee.KEY_insurance +
+                " FROM " + Employee.TABLE + " WHERE " + Employee.KEY_username + " =?";
+        List<String> nameList = new ArrayList<String>() ;
+        Cursor cursor = db.rawQuery(selectQuery, new String[] {email});
+        Integer i =0;
+        if (cursor.moveToFirst()) {
+            do {
+                nameList.add(i,cursor.getString(cursor.getColumnIndex(Employee.KEY_password)));
+                i+=1;
+            } while (cursor.moveToNext());
+        }
+
+        return nameList.get(0);
+    }
+
+    public String getAddress(String email) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery = "SELECT  " +
+                Employee.KEY_name + "," +
+                Employee.KEY_username + "," +
+                Employee.KEY_password + "," +
+                Employee.KEY_clinic + "," +
+                Employee.KEY_address + "," +
+                Employee.KEY_phone + "," +
+                Employee.KEY_payment + "," +
+                Employee.KEY_insurance +
+                " FROM " + Employee.TABLE + " WHERE " + Employee.KEY_username + " =?";
+        List<String> addressList = new ArrayList<String>() ;
+        Cursor cursor = db.rawQuery(selectQuery, new String[] {email});
+        Integer i =0;
+        if (cursor.moveToFirst()) {
+            do {
+                addressList.add(i,cursor.getString(cursor.getColumnIndex(Employee.KEY_password)));
+                i+=1;
+            } while (cursor.moveToNext());
+        }
+
+        return addressList.get(0);
+    }
+
+    public String getPhone(String email) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery = "SELECT  " +
+                Employee.KEY_name + "," +
+                Employee.KEY_username + "," +
+                Employee.KEY_password + "," +
+                Employee.KEY_clinic + "," +
+                Employee.KEY_address + "," +
+                Employee.KEY_phone + "," +
+                Employee.KEY_payment + "," +
+                Employee.KEY_insurance +
+                " FROM " + Employee.TABLE + " WHERE " + Employee.KEY_username + " =?";
+        List<String> phoneList = new ArrayList<String>() ;
+        Cursor cursor = db.rawQuery(selectQuery, new String[] {email});
+        Integer i =0;
+        if (cursor.moveToFirst()) {
+            do {
+                phoneList.add(i,cursor.getString(cursor.getColumnIndex(Employee.KEY_password)));
+                i+=1;
+            } while (cursor.moveToNext());
+        }
+
+        return phoneList.get(0);
+    }
+
+    public String getPayment(String email) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery = "SELECT  " +
+                Employee.KEY_name + "," +
+                Employee.KEY_username + "," +
+                Employee.KEY_password + "," +
+                Employee.KEY_clinic + "," +
+                Employee.KEY_address + "," +
+                Employee.KEY_phone + "," +
+                Employee.KEY_payment + "," +
+                Employee.KEY_insurance +
+                " FROM " + Employee.TABLE + " WHERE " + Employee.KEY_username + " =?";
+        List<String> paymentList = new ArrayList<String>() ;
+        Cursor cursor = db.rawQuery(selectQuery, new String[] {email});
+        Integer i =0;
+        if (cursor.moveToFirst()) {
+            do {
+                paymentList.add(i,cursor.getString(cursor.getColumnIndex(Employee.KEY_password)));
+                i+=1;
+            } while (cursor.moveToNext());
+        }
+
+        return paymentList.get(0);
+    }
+
+    public String getClinic(String email) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery = "SELECT  " +
+                Employee.KEY_name + "," +
+                Employee.KEY_username + "," +
+                Employee.KEY_password + "," +
+                Employee.KEY_clinic + "," +
+                Employee.KEY_address + "," +
+                Employee.KEY_phone + "," +
+                Employee.KEY_payment + "," +
+                Employee.KEY_insurance +
+                " FROM " + Employee.TABLE + " WHERE " + Employee.KEY_username + " =?";
+        List<String> clinicList = new ArrayList<String>() ;
+        Cursor cursor = db.rawQuery(selectQuery, new String[] {email});
+        Integer i =0;
+        if (cursor.moveToFirst()) {
+            do {
+                clinicList.add(i,cursor.getString(cursor.getColumnIndex(Employee.KEY_password)));
+                i+=1;
+            } while (cursor.moveToNext());
+        }
+
+        return clinicList.get(0);
+    }
+
+    public String getInsurance(String email) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery = "SELECT  " +
+                Employee.KEY_name + "," +
+                Employee.KEY_username + "," +
+                Employee.KEY_password + "," +
+                Employee.KEY_clinic + "," +
+                Employee.KEY_address + "," +
+                Employee.KEY_phone + "," +
+                Employee.KEY_payment + "," +
+                Employee.KEY_insurance +
+                " FROM " + Employee.TABLE + " WHERE " + Employee.KEY_username + " =?";
+        List<String> insuranceList = new ArrayList<String>() ;
+        Cursor cursor = db.rawQuery(selectQuery, new String[] {email});
+        Integer i =0;
+        if (cursor.moveToFirst()) {
+            do {
+                insuranceList.add(i,cursor.getString(cursor.getColumnIndex(Employee.KEY_password)));
+                i+=1;
+            } while (cursor.moveToNext());
+        }
+
+        return insuranceList.get(0);
+    }
+
     public boolean login(String email, String password) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery = "SELECT  " +
