@@ -19,12 +19,6 @@
             android:text="Welcome"/>
 
         <Button
-            android:id="@+id/clinicOptionButon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CLINIC OPTIONS"/>
-
-        <Button
             android:id="@+id/addServiceBTN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
