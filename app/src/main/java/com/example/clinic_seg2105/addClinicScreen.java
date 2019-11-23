@@ -25,7 +25,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import static com.example.clinic_seg2105.GlobalVariables.*;
 
 public class addClinicScreen extends AppCompatActivity {
 
