@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -16,8 +15,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.List;
 //import static com.example.clinic_seg2105.GlobalVariables.*;
 
 
@@ -28,11 +25,7 @@ public class employeeScreen extends AppCompatActivity implements View.OnClickLis
     private Button deleteServiceBTN;
     private Button profileOptionButton;
     private Button logoutButton;
-
-    ClinicDBHelper myDb;
-
-    ClinicRepo repo = new ClinicRepo(this);
-    private List<String> clinic_list = repo.getAll();
+    //Clinic test = new Clinic("dsds", "asd", "asd","asd", "asd");
 
     public static int screenChoice;
 
@@ -41,6 +34,7 @@ public class employeeScreen extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_screen);
 
+        clinicOptionButton = (Button) findViewById(R.id.clinicOptionButon);
         addServiceBTN = (Button) findViewById(R.id.addServiceBTN);
         deleteServiceBTN = (Button) findViewById(R.id.deleteServiceBTN);
         profileOptionButton = (Button) findViewById(R.id.profileOptionButton);
@@ -57,6 +51,9 @@ public class employeeScreen extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.clinicOptionButon:
+                clinicOptionButtonFunc();
+                break;
             case R.id.addServiceBTN:
                 addServiceFunc();
                 break;
@@ -71,6 +68,11 @@ public class employeeScreen extends AppCompatActivity implements View.OnClickLis
                 break;
         }
 
+    }
+
+    private void clinicOptionButtonFunc(){
+        Intent intent = new Intent(this, clinicOptionEmployee.class);
+        startActivity(intent);
     }
 
     private void addServiceFunc(){
