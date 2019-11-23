@@ -87,12 +87,13 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
     }
 
     private void registerUser() {
-
+        Intent intent = new Intent(this, loginScreen.class);
 
         int memberRole = spinner.getSelectedItemPosition();
         String temp_name = name.getText().toString().trim();
         String temp_email = email.getText().toString().trim();
         String temp_pass = password.getText().toString().trim();
+        String temp_passRe = passwordRe.getText().toString().trim();
 
         if (TextUtils.isEmpty(temp_name) || TextUtils.isEmpty(temp_email) || TextUtils.isEmpty(temp_pass)) {
             Toast.makeText(this, "Please Enter All Fields", Toast.LENGTH_LONG).show();
@@ -100,8 +101,7 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
 
         }
 
-        if (temp_pass.equals(passwordRe.getText().toString().trim())) {
-
+        if (!temp_pass.equals(temp_passRe)) {
             if (memberRole == 1) {
                 //insert new employee
 
@@ -115,14 +115,12 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
                 employee.setPayment(null);
                 employee.setInsurance(null);
                 repo.insert(employee);
-
-                Intent intent = new Intent(this, loginScreen.class);
-                startActivity(intent);
             }
 
+            startActivity(intent);
         } else{
-            Toast.makeText(this, "Passwords don't match", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please Enter All Fields", Toast.LENGTH_LONG).show();
         }
-
     }
+
 }
