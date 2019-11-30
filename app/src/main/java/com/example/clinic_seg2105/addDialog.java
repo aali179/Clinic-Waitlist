@@ -7,5 +7,5 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 public class addDialog extends AppCompatDialogFragment {
 
     private EditText ServiceName;
-    
+
 }
