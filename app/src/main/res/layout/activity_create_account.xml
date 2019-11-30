@@ -6,13 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".createAccount">
 
-    <TextView
-        android:id="@+id/welcomeScreen"
-        android:layout_width="326dp"
-        android:layout_height="53dp"
-        android:text="@string/welcomescreen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/user_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="@android:dimen/notification_large_icon_height"
+            tools:srcCompat="@tools:sample/avatars[0]"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create New Account"
+            android:gravity="center"
+            android:textColor="#2278BE"
+            android:textColorLink="#03A9F4"
+            android:textStyle="bold"
+            android:typeface="normal"/>
+
+        <Button
+            android:id="@+id/createNewEmployee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create New Employee Account"/>
+
+        <Button
+            android:id="@+id/createNewPatient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create new Patient Account"/>
+
+        <Button
+            android:id="@+id/signInAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign in as Admin"/>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
