@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".serviceOptionEmployee">
+    tools:context=".patientSearchService">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,16 +13,21 @@
         android:orientation="vertical">
 
         <Spinner
-            android:id="@+id/serviceOptionForEmployee"
+            android:id="@+id/searchServiceSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/addServiceEmployee"
+            android:id="@+id/searchServiceButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Service to Profile"/>
+            android:text="Search"/>
+
+        <ListView
+            android:id="@+id/listViewService"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"/>
+
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

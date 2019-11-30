@@ -5,7 +5,6 @@ public class User {
     private String email;
     private String password;
     private String role;
-    private String clinic;
 
     public User(){
 
@@ -16,7 +15,6 @@ public class User {
         this.email = email;
         this.password = password;
         this.role = role;
-        this.clinic = "";
     }
 
     public String getName(){return name;}
@@ -30,8 +28,5 @@ public class User {
 
     public String getRole(){return role;}
     public void setRole(String role){this.role = role;}
-
-    public String getClinic(){return clinic;}
-    public void setClinic(String clinic){this.clinic = clinic;}
 
 }
