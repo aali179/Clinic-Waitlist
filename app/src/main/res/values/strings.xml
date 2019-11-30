@@ -1,24 +1,27 @@
 <resources>
-    <string name="app_name">Clinic</string>
-    <string name="frontpage_screen">Create New User Account</string>
-    <string name="Name">Full Name</string>
-    <string name="password">Enter Password</string>
-    <string name="createAcc">Create Account</string>
-    <string name="enter1">(Full Name)</string>
-    <string name="enter2">(Enter Password)</string>
-    <string name="welcomescreen">Welcome</string>
-    <string name="login"><u>Already have an account? Click here to sign in</u>.</string>
+    <string name="app_name">Hospital_Clinic</string>
 
     <string-array name="login_dropdown">
         <item>Patient</item>
         <item>Employee</item>
     </string-array>
 
-    <string-array name="service_dropdown">
+    <string-array name="service_role">
         <item>Doctor</item>
         <item>Nurse</item>
         <item>Staff</item>
     </string-array>
 
+    <string-array name="insurance_types">
+        <item>Through Employer</item>
+        <item>Personal Insurance</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="payment_methods">
+        <item>Credit Card</item>
+        <item>Cash</item>
+        <item>Cheque</item>
+    </string-array>
 
 </resources>
