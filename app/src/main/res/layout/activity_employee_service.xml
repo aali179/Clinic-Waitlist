@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/chooseServToAorD"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="Choose service to add/delete to employee profile: " />
+
+    <Spinner
+        android:id="@+id/serviceSpinner"
+        android:layout_width="400dp"
+        android:layout_height="60dp" />
+
+    <Button
+        android:id="@+id/addService"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:text="ADD" />
+
+    <Button
+        android:id="@+id/delService"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:text="DELETE" />
+</LinearLayout>

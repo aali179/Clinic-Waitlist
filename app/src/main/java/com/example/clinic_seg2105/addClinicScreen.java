@@ -1,7 +1,9 @@
 package com.example.clinic_seg2105;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,24 +18,43 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import static com.example.clinic_seg2105.GlobalVariables.*;
+
 public class addClinicScreen extends AppCompatActivity {
 
     private EditText phoneNumber;
-    private EditText nameClinicTextView;
-    private EditText emailAddress;
-
+    private EditText nameClinic;
+    private EditText locationAddress;
+    private Spinner insurance;
+    private Spinner payment;
     private Button saveButton;
+
+    // Calling an instance of the database class that stores all the information
+    ClinicDBHelper myDb;
+
+    ClinicRepo repo = new ClinicRepo(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_clinic_screen);
 
+        phoneNumber = (EditText) findViewById(R.id.phoneNumber);
+        nameClinic = (EditText) findViewById(R.id.nameOfClinic);
+        locationAddress = (EditText) findViewById(R.id.locationAddress);
+        insurance = (Spinner) findViewById(R.id.insurance);
+        payment = (Spinner) findViewById(R.id.payment);
+        saveButton = (Button) findViewById(R.id.saveButton);
+
         String[] insuranceSpinner = new String[]{"Through Employer", "Personal Insurance", "Other"};
         String[] paymentSpinner = new String[]{"Credit Card", "Cash", "Cheque"};
-
-        Spinner i = (Spinner) findViewById(R.id.insurance);
-        Spinner p = (Spinner) findViewById(R.id.payment);
 
         ArrayAdapter<String> insuranceAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, insuranceSpinner);
         ArrayAdapter<String> paymentAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, paymentSpinner);
@@ -41,11 +62,39 @@ public class addClinicScreen extends AppCompatActivity {
         insuranceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         paymentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        i.setAdapter(insuranceAdapter);
-        p.setAdapter(paymentAdapter);
+        insurance.setAdapter(insuranceAdapter);
+        payment.setAdapter(paymentAdapter);
 
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addClinic();
+            }
+        });
 
     }
+
+    public void addClinic(){
+        Intent intent = new Intent(this, adminScreen.class);
+
+        String locAdd = locationAddress.getText().toString().trim();
+        String phoNu = phoneNumber.getText().toString().trim();
+        String nameClin = nameClinic.getText().toString().trim();
+        String ins = insurance.getSelectedItem().toString().trim();
+        String pay = payment.getSelectedItem().toString().trim();
+
+        Clinic clinic = new Clinic();
+        clinic.setAddress(locAdd);
+        clinic.setPhone(phoNu);
+        clinic.setName(nameClin);
+        clinic.setInsurance(ins);
+        clinic.setPayment(pay);
+        repo.insert(clinic);
+
+        startActivity(intent);
+    }
+
+
 
     //@Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

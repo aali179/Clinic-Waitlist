@@ -1,20 +1,29 @@
 package com.example.clinic_seg2105;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-public class adminScreen extends AppCompatActivity {
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.lang.reflect.Array;
+
+public class adminScreen extends AppCompatActivity implements View.OnClickListener {
     private Button addService;
     private Button editService;
     private Button deleteService;
     private Button addClinic;
 
-    public static Integer screenChoice;
+    FirebaseDatabase mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,91 +33,55 @@ public class adminScreen extends AppCompatActivity {
         addService = (Button) findViewById(R.id.addServiceButton);
         editService = (Button) findViewById(R.id.editServiceButton);
         deleteService = (Button) findViewById(R.id.deleteServiceButton);
-        addClinic = (Button)findViewById(R.id.addClinicButton);
+        addClinic = (Button) findViewById(R.id.addClinicButton);
 
-        AddData();
-        EditData();
-        DeleteData();
-        AddClinic();
+        mDatabase = FirebaseDatabase.getInstance();
 
-       // addService.setOnClickListener(new View.OnClickListener() {
-         //   @Override
-           // public void onClick(View v) {
-             //   openAddDialog();
-            //}
-        //});
 
-//        editService.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openEditDialog();
-//            }
-//        });
-//
-//        deleteService.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                deleteServiceDialog();
-//            }
-//        });
+        addService.setOnClickListener(this);
+        editService.setOnClickListener(this);
+        deleteService.setOnClickListener(this);
+        addClinic.setOnClickListener(this);
 
     }
 
-    public void AddData() {
-        addService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAddDialog();
-            }
-        });
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.addServiceButton:
+                addServiceActivity();
+                break;
+            case R.id.editServiceButton:
+                editServiceActivity();
+                break;
+            case R.id.deleteServiceButton:
+                deleteServiceActivity();
+                break;
+            case R.id.addClinicButton:
+                addClinicActivity();
+                break;
+        }
+
     }
 
-    public void EditData() {
-        editService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openEditDialog();
-            }
-        });
+    private void addServiceActivity(){
+        addServiceDialog aSD = new addServiceDialog();
+        aSD.show(getSupportFragmentManager(), "Add Service");
     }
 
-    public void DeleteData() {
-        deleteService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDeleteDialog();
-            }
-        });
+    private void editServiceActivity(){
+        Intent intent = new Intent (getApplicationContext(), editServiceScreen.class);
+        startActivity(intent);
+
     }
 
-    public void AddClinic(){
-        addClinic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAddClinicDialog();
-            }
-        });    }
-
-    public void openAddDialog(){
-        Intent intent = new Intent(this, editServiceScreen.class);
-        screenChoice = 1;
+    private void deleteServiceActivity(){
+        Intent intent = new Intent(getApplicationContext(), deleteService.class);
         startActivity(intent);
     }
 
-    public void openEditDialog() {
-        Intent intent = new Intent(this, editServiceScreen.class);
-        screenChoice = 2;
-        startActivity(intent);
-    }
-
-    public void openDeleteDialog() {
-        Intent intent = new Intent(this, editServiceScreen.class);
-        screenChoice = 3;
-        startActivity(intent);
-    }
-
-    public void openAddClinicDialog(){
-        Intent intent = new Intent(this, addClinicScreen.class);
+    private void addClinicActivity(){
+        Intent intent = new Intent(getApplicationContext(), addClinic.class);
         startActivity(intent);
     }
 }

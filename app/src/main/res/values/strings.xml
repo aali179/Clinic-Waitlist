@@ -14,5 +14,11 @@
         <item>Employee</item>
     </string-array>
 
+    <string-array name="service_dropdown">
+        <item>Doctor</item>
+        <item>Nurse</item>
+        <item>Staff</item>
+    </string-array>
+
 
 </resources>

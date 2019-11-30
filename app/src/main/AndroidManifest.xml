@@ -9,12 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addClinicScreen"></activity>
+        <activity android:name=".viewEmployeeProfile"></activity>
+        <activity android:name=".patientSearchService" />
+        <activity android:name=".patientSearchClinic" />
+        <activity android:name=".patientSearch" />
+        <activity android:name=".editEmployeeProfile" />
+        <activity android:name=".serviceOptionEmployee" />
+        <activity android:name=".clinicOptionEmployee" />
+        <activity android:name=".employeeScreen" />
+        <activity android:name=".addClinicScreen" />
         <activity android:name=".adminScreen" />
+        <activity android:name=".addDeleteServiceScreen" />
         <activity android:name=".editServiceScreen" />
         <activity android:name=".loginScreen" />
         <activity android:name=".createAccount" />
-        <activity android:name=".addServiceScreen" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
