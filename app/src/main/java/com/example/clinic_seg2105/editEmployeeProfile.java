@@ -1,4 +1,4 @@
-package com.example.hospital_clinic;
+package com.example.clinic_seg2105;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
