@@ -198,10 +198,5 @@ public class editEmployeeProfile extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void setEmployeeHours(View v){
-        Intent intent = new Intent(this, CalendarActivity.class);
-        startActivity(intent);
-    }
-
 
 }

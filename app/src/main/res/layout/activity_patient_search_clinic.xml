@@ -4,23 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".serviceOptionEmployee">
+    tools:context=".patientSearchClinic">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-88dp"
+        tools:layout_editor_absoluteY="0dp">
 
-        <Spinner
-            android:id="@+id/serviceOptionForEmployee"
+        <TextView
+            android:id="@+id/lol"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <Button
-            android:id="@+id/addServiceEmployee"
+        <ListView
+            android:id="@+id/listViewClinic"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Service to Profile"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

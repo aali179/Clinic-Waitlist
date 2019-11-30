@@ -95,32 +95,32 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
         String temp_pass = password.getText().toString().trim();
         String temp_passRe = passwordRe.getText().toString().trim();
 
-        if (TextUtils.isEmpty(temp_name) || TextUtils.isEmpty(temp_email) || TextUtils.isEmpty(temp_pass)) {
+       if (TextUtils.isEmpty(temp_name) || TextUtils.isEmpty(temp_email) || TextUtils.isEmpty(temp_pass)) {
             Toast.makeText(this, "Please Enter All Fields", Toast.LENGTH_LONG).show();
             return;
 
         }
 
-        if (!temp_pass.equals(temp_passRe)) {
-            if (memberRole == 1) {
-                //insert new employee
+       if (!temp_pass.equals(temp_passRe)) {
+           if (memberRole == 1) {
+               //insert new employee
 
-                Employee employee = new Employee();
-                employee.setName(temp_name);
-                employee.setUsername(temp_email);
-                employee.setPassword(temp_pass);
-                employee.setClinic(null);
-                employee.setAddress(null);
-                employee.setPhone(null);
-                employee.setPayment(null);
-                employee.setInsurance(null);
-                repo.insert(employee);
-            }
+               Employee employee = new Employee();
+               employee.setName(temp_name);
+               employee.setUsername(temp_email);
+               employee.setPassword(temp_pass);
+               employee.setClinic(null);
+               employee.setAddress(null);
+               employee.setPhone(null);
+               employee.setPayment(null);
+               employee.setInsurance(null);
+               repo.insert(employee);
+           }
 
-            startActivity(intent);
-        } else{
-            Toast.makeText(this, "Please Enter All Fields", Toast.LENGTH_LONG).show();
-        }
+           startActivity(intent);
+       } else{
+           Toast.makeText(this, "Please Enter All Fields", Toast.LENGTH_LONG).show();
+       }
     }
 
 }
