@@ -9,20 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".viewEmployeeProfile"></activity>
+        <activity android:name=".bookingSection"
+            android:parentActivityName=".patientSearchClinic"></activity>
+        <activity
+            android:name=".commentSection"
+            android:parentActivityName=".patientBookingRating" />
+        <activity
+            android:name=".patientBookingRating"
+            android:parentActivityName=".patientSearchClinic" />
+        <activity android:name=".patientIsOpen" />
         <activity android:name=".patientSearchService" />
         <activity android:name=".patientSearchClinic" />
-        <activity android:name=".patientSearch" />
-        <activity android:name=".editEmployeeProfile" />
+        <activity android:name=".patientScreen" />
+        <activity android:name=".patientCreateAccount" />
+        <activity android:name=".employeeSetHours" />
+        <activity android:name=".viewEmployeeProfile" />
         <activity android:name=".serviceOptionEmployee" />
-        <activity android:name=".clinicOptionEmployee" />
-        <activity android:name=".employeeScreen" />
-        <activity android:name=".addClinicScreen" />
-        <activity android:name=".adminScreen" />
-        <activity android:name=".addDeleteServiceScreen" />
+        <activity android:name=".editEmployeeProfile" />
+        <activity android:name=".employeeCreateAccount" />
+        <activity android:name=".addClinic" />
         <activity android:name=".editServiceScreen" />
-        <activity android:name=".loginScreen" />
+        <activity android:name=".deleteService" />
+        <activity android:name=".addServiceDialog" />
+        <activity android:name=".adminScreen" />
+        <activity android:name=".employeeScreen" />
         <activity android:name=".createAccount" />
+        <activity android:name=".loginScreen" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

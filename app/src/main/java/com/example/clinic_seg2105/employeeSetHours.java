@@ -1,4 +1,4 @@
-package com.example.hospital_clinic;
+package com.example.clinic_seg2105;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
