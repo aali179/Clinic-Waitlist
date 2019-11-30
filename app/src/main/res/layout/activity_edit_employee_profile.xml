@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,85 +12,57 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/employeeInfoPrompt"
+        <EditText
+            android:id="@+id/clinicNameUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enter Employee Information: "
-            android:gravity="center"/>
-
-        <TextView
-            android:id="@+id/nameOfClinicPrompt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Choose A Clinic: "
-            android:gravity="center"/>
-
-        <Spinner
-            android:id="@+id/clinicSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"/>
-
-        <TextView
-            android:id="@+id/addressPrompt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Address: "
-            android:gravity="center"/>
-
+            android:hint="Enter Clinic Name"/>
 
         <EditText
-            android:id="@+id/locationEntry"
+            android:id="@+id/clinicEmailUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Address"
-            android:gravity="center"/>
-
-        <TextView
-            android:id="@+id/phoneNumberPrompt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Phone Number: "
-            android:gravity="center"/>
+            android:hint="Enter Email Address"/>
 
         <EditText
-            android:id="@+id/phoneNumberEntry"
+            android:id="@+id/clinicNumberUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="(***) *** ***"
-            android:gravity="center"/>
+            android:hint="Enter Phone Number"/>
 
-        <TextView
-            android:id="@+id/insurancePrompt"
+        <EditText
+            android:id="@+id/clinicAddressUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Insurance Type"
-            android:gravity="center"/>
+            android:hint="Enter Address"/>
 
         <Spinner
-            android:id="@+id/insuranceSpinner"
+            android:id="@+id/insuranceSpinnerUpdate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:spinnerMode="dropdown"/>
+            android:layout_height="wrap_content"/>
 
-        <TextView
-            android:id="@+id/paymentPrompt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Payment Methods Accepted"
-            android:gravity="center"/>
         <Spinner
-            android:id="@+id/paymentSpinner"
+            android:id="@+id/paymentSpinnerUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/clinicPasswordUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"/>
+            android:hint="Enter Password"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Re-enter Password"/>
+
         <Button
-            android:id="@+id/saveInfoButton"
+            android:id="@+id/updateEmployee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SAVE"/>
+            android:text="Update Information"/>
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

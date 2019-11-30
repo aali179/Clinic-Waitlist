@@ -1,201 +1,108 @@
+
 package com.example.clinic_seg2105;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import java.util.List;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class editEmployeeProfile extends AppCompatActivity {
+public class editEmployeeProfile extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText phoneNumber;
-    private Spinner nameClinic;
-    private EditText locationAddress;
-    private Spinner insurance;
-    private Spinner payment;
-    private Button saveButton;
+    private EditText clinicNameUpdate, clinicEmailUpdate, clinicNumberUpdate, clinicAddressUpdate, clinicPasswordUpdate;
+    private Spinner insuranceSpinnerUpdate, paymentSpinnerUpdate;
+    private Button updateEmployee;
 
-
-    private String nameOfClinic;
-    private String paymentType;
-    private String insuranceType;
-
-    ArrayAdapter<String> spinnerAdapter;
-
-    private String activeUser = loginScreen.activeUser;
+    FirebaseAuth mAuth;
+    FirebaseUser mUser;
+    DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_employee_profile);
 
-        phoneNumber = (EditText) findViewById(R.id.phoneNumberEntry);
-        nameClinic = (Spinner) findViewById(R.id.clinicSpinner);
-        locationAddress = (EditText) findViewById(R.id.locationEntry);
-        insurance = (Spinner) findViewById(R.id.insuranceSpinner);
-        payment = (Spinner) findViewById(R.id.paymentSpinner);
-        saveButton = (Button) findViewById(R.id.saveInfoButton);
-
-        String[] insuranceSpinner = new String[]{"Through Employer", "Personal Insurance", "Other"};
-        String[] paymentSpinner = new String[]{"Credit Card", "Cash", "Cheque"};
-
-        final ArrayAdapter<String> insuranceAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, insuranceSpinner);
-        final ArrayAdapter<String> paymentAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, paymentSpinner);
-
-        insuranceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        paymentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        insurance.setAdapter(insuranceAdapter);
-        payment.setAdapter(paymentAdapter);
-
-        loadClinics();
-        //loadDefaults(paymentAdapter, insuranceAdapter);
-
-        //ClinicSpinner Initialization
-        nameClinic.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                //Service selected = (Service) parent.getItemAtPosition(position);
-                //mTVservice.setText(selected.getService());
-
-                String text = parent.getItemAtPosition(position).toString();
-                nameOfClinic = text;
-                Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
-                autoFillFields(nameOfClinic, paymentAdapter, insuranceAdapter);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        //PaymentSpinner Initialization
-        payment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                //Service selected = (Service) parent.getItemAtPosition(position);
-                //mTVservice.setText(selected.getService());
-
-                String text = parent.getItemAtPosition(position).toString();
-                paymentType = text;
-                Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        //PaymentSpinner Initialization
-        insurance.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                //Service selected = (Service) parent.getItemAtPosition(position);
-                //mTVservice.setText(selected.getService());
-
-                String text = parent.getItemAtPosition(position).toString();
-                insuranceType = text;
-                Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editProfile();
-            }
-        });
+        initializer();
+        spinnerSetUp();
     }
 
-    private void loadClinics(){
-        ClinicRepo db = new ClinicRepo(getApplicationContext());
-        List<String> clinics = db.getAll();
-        spinnerAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, clinics);
-        nameClinic.setAdapter(spinnerAdapter);
-
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.updateEmployee:
+                updateEmployeeFunction();
+                break;
+        }
 
     }
 
-    private void autoFillFields(String clnc, ArrayAdapter<String> pay, ArrayAdapter<String> ins) {
-        ClinicRepo db = new ClinicRepo(getApplicationContext());
-        List<String> clinicInfo = db.getAutofill(clnc);
-        locationAddress.setText(clinicInfo.get(0));
-        phoneNumber.setText(clinicInfo.get(1));
-        int paymentSpinnerPosition = pay.getPosition(clinicInfo.get(2));
-        payment.setSelection(paymentSpinnerPosition);
-        int insuranceSpinnerPosition = ins.getPosition(clinicInfo.get(3));
-        insurance.setSelection(insuranceSpinnerPosition);
-    }
+    private void initializer(){
+        clinicNameUpdate = (EditText) findViewById(R.id.clinicNameUpdate);
+        clinicEmailUpdate = (EditText) findViewById(R.id.clinicEmailUpdate);
+        clinicNumberUpdate = (EditText) findViewById(R.id.clinicNumberUpdate);
+        clinicAddressUpdate = (EditText) findViewById(R.id.clinicAddressUpdate);
+        clinicPasswordUpdate = (EditText) findViewById(R.id.clinicPasswordUpdate);
+        updateEmployee = (Button) findViewById(R.id.updateEmployee);
 
-    private void loadDefaults(ArrayAdapter<String> pay, ArrayAdapter<String> ins) {
-        // LOAD INITIAL DATA (IF ALREADY SET)
-        EmployeeRepo repo = new EmployeeRepo(getApplicationContext());
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        // load initial profile info
-        String clinic = repo.getClinic(activeUser);
-        String address = repo.getAddress(activeUser);
-        String phone = repo.getPhone(activeUser);
-        paymentType = repo.getPayment(activeUser);
-        insuranceType = repo.getInsurance(activeUser);
-
-        // set EditText/Spinner defaults
-        int clinicSpinnerPosition = spinnerAdapter.getPosition(clinic);
-        nameClinic.setSelection(clinicSpinnerPosition);
-        locationAddress.setText(address);
-        phoneNumber.setText(phone);
-        int paymentSpinnerPosition = pay.getPosition(paymentType);
-        payment.setSelection(paymentSpinnerPosition);
-        int insuranceSpinnerPosition = ins.getPosition(insuranceType);
-        insurance.setSelection(insuranceSpinnerPosition);
+        updateEmployee.setOnClickListener(this);
     }
 
 
-    private void editProfile() {
-        Intent intent = new Intent(this, employeeScreen.class);
+    private void spinnerSetUp(){
+        insuranceSpinnerUpdate = (Spinner) findViewById(R.id.insuranceSpinnerUpdate);
+        paymentSpinnerUpdate = (Spinner) findViewById(R.id.paymentSpinnerUpdate);
 
-        EmployeeRepo repo = new EmployeeRepo(getApplicationContext());
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.insurance_types, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        insuranceSpinnerUpdate.setAdapter(adapter);
 
-        // save old profile info
-        String name = repo.getName(activeUser);
-        String username = activeUser;
-        String password = repo.getPassword(activeUser);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.payment_methods, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        paymentSpinnerUpdate.setAdapter(adapter2);
+    }
 
-        // delete old profile
-        repo.delete(activeUser);
+    private void updateEmployeeFunction(){
 
-        // insert new (updated) profile
-        Employee employee = new Employee();
-        employee.setName(name);
-        employee.setUsername(username);
-        employee.setPassword(password);
-        employee.setAddress(locationAddress.getText().toString());
-        employee.setPhone(phoneNumber.getText().toString());
-        employee.setClinic(nameOfClinic);
-        employee.setPayment(paymentType);
-        employee.setInsurance(insuranceType);
-        repo.insert(employee);
+        if (mUser == null){
+            finish();
+            startActivity(new Intent(this, createAccount.class));
+        } else {
 
-        startActivity(intent);
+            String temp_name = clinicNameUpdate.getText().toString().trim();
+            String temp_email = clinicEmailUpdate.getText().toString().trim();
+            String temp_number = clinicNumberUpdate.getText().toString().trim();
+            String temp_address = clinicAddressUpdate.getText().toString().trim();
+            String temp_insurance = insuranceSpinnerUpdate.getSelectedItem().toString().trim();
+            String temp_payment = paymentSpinnerUpdate.getSelectedItem().toString().trim();
+            String temp_password = clinicPasswordUpdate.getText().toString().trim();
+
+            mDatabase.child("Employees").child(mUser.getUid()).child("address").setValue(temp_address);
+            mDatabase.child("Employees").child(mUser.getUid()).child("email").setValue(temp_email);
+            mDatabase.child("Employees").child(mUser.getUid()).child("insurance").setValue(temp_insurance);
+            mDatabase.child("Employees").child(mUser.getUid()).child("name").setValue(temp_name);
+            mDatabase.child("Employees").child(mUser.getUid()).child("number").setValue(temp_number);
+            mDatabase.child("Employees").child(mUser.getUid()).child("payment").setValue(temp_payment);
+
+        }
+
     }
 
 

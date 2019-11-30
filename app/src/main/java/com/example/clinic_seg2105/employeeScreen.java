@@ -1,64 +1,51 @@
+
 package com.example.clinic_seg2105;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-//import static com.example.clinic_seg2105.GlobalVariables.*;
-
 
 public class employeeScreen extends AppCompatActivity implements View.OnClickListener {
 
-    private Button clinicOptionButton;
-    private Button addServiceBTN;
-    private Button deleteServiceBTN;
+    private Button serviceOptionButton;
     private Button profileOptionButton;
     private Button logoutButton;
-    //Clinic test = new Clinic("dsds", "asd", "asd","asd", "asd");
+    private Button employeeViewProfile;
+    private Button setHoursEmployee;
 
-    public static int screenChoice;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_screen);
 
-        clinicOptionButton = (Button) findViewById(R.id.clinicOptionButon);
-        addServiceBTN = (Button) findViewById(R.id.addServiceBTN);
-        deleteServiceBTN = (Button) findViewById(R.id.deleteServiceBTN);
+        serviceOptionButton = (Button) findViewById(R.id.serviceOptionButton);
         profileOptionButton = (Button) findViewById(R.id.profileOptionButton);
         logoutButton = (Button) findViewById(R.id.logoutButton);
+        employeeViewProfile = (Button) findViewById(R.id.employeeViewProfile);
+        setHoursEmployee = (Button) findViewById(R.id.setHoursEmployee);
 
-        clinicOptionButton.setOnClickListener(this);
-        addServiceBTN.setOnClickListener(this);
-        deleteServiceBTN.setOnClickListener(this);
+        mAuth = FirebaseAuth.getInstance();
+
+        serviceOptionButton.setOnClickListener(this);
         profileOptionButton.setOnClickListener(this);
         logoutButton.setOnClickListener(this);
-        //clinic_vector.add(test);
+        employeeViewProfile.setOnClickListener(this);
+        setHoursEmployee.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.clinicOptionButon:
-                clinicOptionButtonFunc();
-                break;
-            case R.id.addServiceBTN:
-                addServiceFunc();
-                break;
-            case R.id.deleteServiceBTN:
-                deleteServiceFunc();
+            case R.id.serviceOptionButton:
+                serviceOptionFunc();
                 break;
             case R.id.profileOptionButton:
                 profileOptionEmpFunc();
@@ -66,36 +53,44 @@ public class employeeScreen extends AppCompatActivity implements View.OnClickLis
             case R.id.logoutButton:
                 logoutFunc();
                 break;
+            case R.id.employeeViewProfile:
+                viewEmployeeProfile();
+                break;
+            case R.id.setHoursEmployee:
+                setHoursEmployeeFunc();
+                break;
         }
 
     }
 
-    private void clinicOptionButtonFunc(){
-        Intent intent = new Intent(this, clinicOptionEmployee.class);
+    // still need to do delete...
+    private void serviceOptionFunc(){
+        Intent intent = new Intent(this, serviceOptionEmployee.class);
         startActivity(intent);
     }
 
-    private void addServiceFunc(){
-        Intent intent = new Intent(this, addDeleteServiceScreen.class);
-        screenChoice = 2;
-        startActivity(intent);
-    }
-
-    private void deleteServiceFunc(){
-        Intent intent = new Intent(this, addDeleteServiceScreen.class);
-        screenChoice = 3;
-        startActivity(intent);
-    }
-
+    //done
     private void profileOptionEmpFunc(){
         Intent intent = new Intent(this, editEmployeeProfile.class);
         startActivity(intent);
     }
 
-    private void logoutFunc(){
-        Intent intent = new Intent(this, MainActivity.class);
+    //done
+    private void viewEmployeeProfile(){
+        Intent intent = new Intent(this, viewEmployeeProfile.class);
         startActivity(intent);
     }
 
-}
+    private void setHoursEmployeeFunc(){
+        Intent intent = new Intent(this, employeeSetHours.class);
+        startActivity(intent);
+    }
 
+    //done
+    private void logoutFunc(){
+        mAuth.signOut();
+        startActivity(new Intent(this, loginScreen.class));
+    }
+
+
+}
