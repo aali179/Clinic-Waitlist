@@ -1,47 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".adminScreen">
+<?xml version="1.0" encoding="UTF-8"?>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout tools:context=".adminScreen" android:layout_height="match_parent" android:layout_width="match_parent" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Welcome, you are logged in as admin"
-            android:gravity="center"
-            android:paddingTop="@android:dimen/notification_large_icon_height"/>
 
-        <Button
-            android:id="@+id/addServiceButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Service"/>
+    -<LinearLayout android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
-        <Button
-            android:id="@+id/editServiceButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Edit Service"/>
+    <TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:paddingTop="@android:dimen/notification_large_icon_height" android:gravity="center" android:text="Welcome, you are logged in as admin"/>
 
-        <Button
-            android:id="@+id/deleteServiceButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete Service"/>
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:text="Add Service" android:id="@+id/addServiceButton"/>
 
-        <Button
-            android:id="@+id/addClinicButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Clinic"/>
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:text="Edit Service" android:id="@+id/editServiceButton"/>
 
-    </LinearLayout>
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:text="Delete Service" android:id="@+id/deleteServiceButton"/>
+
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:text="Add Clinic" android:id="@+id/addClinicButton"/>
+
+</LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

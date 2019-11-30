@@ -1,12 +1,20 @@
 package com.example.clinic_seg2105;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.lang.reflect.Array;
 
 public class adminScreen extends AppCompatActivity implements View.OnClickListener {
     private Button addService;
@@ -14,7 +22,8 @@ public class adminScreen extends AppCompatActivity implements View.OnClickListen
     private Button deleteService;
     private Button addClinic;
 
-    public static Integer screenChoice;
+    FirebaseDatabase mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +35,13 @@ public class adminScreen extends AppCompatActivity implements View.OnClickListen
         deleteService = (Button) findViewById(R.id.deleteServiceButton);
         addClinic = (Button) findViewById(R.id.addClinicButton);
 
+        mDatabase = FirebaseDatabase.getInstance();
+
+
         addService.setOnClickListener(this);
         editService.setOnClickListener(this);
         deleteService.setOnClickListener(this);
         addClinic.setOnClickListener(this);
-
 
     }
 
@@ -54,34 +65,23 @@ public class adminScreen extends AppCompatActivity implements View.OnClickListen
     }
 
     private void addServiceActivity(){
-        Intent intent = new Intent(this, editServiceScreen.class);
-        screenChoice = 1;
-        startActivity(intent);
+        addServiceDialog aSD = new addServiceDialog();
+        aSD.show(getSupportFragmentManager(), "Add Service");
     }
 
     private void editServiceActivity(){
-        Intent intent = new Intent(this, editServiceScreen.class);
-        screenChoice = 2;
+        Intent intent = new Intent (getApplicationContext(), editServiceScreen.class);
         startActivity(intent);
 
     }
 
     private void deleteServiceActivity(){
-        Intent intent = new Intent(this, editServiceScreen.class);
-        screenChoice = 3;
+        Intent intent = new Intent(getApplicationContext(), deleteService.class);
         startActivity(intent);
     }
 
     private void addClinicActivity(){
-        Intent intent = new Intent(this, addClinicScreen.class);
+        Intent intent = new Intent(getApplicationContext(), addClinic.class);
         startActivity(intent);
     }
-
-
-    public void openAddDialog() {
-        Intent intent = new Intent(this, editServiceScreen.class);
-        screenChoice = 1;
-        startActivity(intent);
-    }
-
 }

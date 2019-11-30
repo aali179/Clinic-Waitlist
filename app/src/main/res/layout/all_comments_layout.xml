@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <androidx.cardview.widget.CardView android:layout_height="wrap_content" android:layout_width="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_margin="7dp" android:orientation="vertical">
+
+
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_margin="10dp" android:orientation="horizontal">
+
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="14sp" android:text="username " android:id="@+id/comment_user_name"/>
+
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="14sp" android:text="commented on " android:id="@+id/simple_text"/>
+
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="14sp" android:text="date" android:id="@+id/comment_date"/>
+
+</LinearLayout>
+
+
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_margin="10dp" android:orientation="vertical">
+
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="14sp" android:text="comment text will display" android:id="@+id/comment_text"/>
+
+    <TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:textSize="14sp" android:text="Time" android:id="@+id/comment_time" android:layout_gravity="end" android:textAlignment="viewEnd"/>
+
+</LinearLayout>
+
+</LinearLayout>
+
+</androidx.cardview.widget.CardView>
