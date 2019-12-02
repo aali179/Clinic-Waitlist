@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".patientIsOpen">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            app:srcCompat="@drawable/rectangle" />
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,15 +34,21 @@
 
         <Button
             android:id="@+id/timePicker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="pick time"/>
+            android:layout_width="207dp"
+            android:layout_height="34dp"
+            android:background="@drawable/rect_button"
+            android:text="pick time"
+            android:translationX="100dp"
+            android:translationY="10dp" />
 
         <Button
             android:id="@+id/search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Search"/>
+            android:layout_width="206dp"
+            android:layout_height="34dp"
+            android:background="@drawable/rect_button"
+            android:text="Search"
+            android:translationX="100dp"
+            android:translationY="30dp" />
 
         <ListView
             android:id="@+id/clinicListTime"

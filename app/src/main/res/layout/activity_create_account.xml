@@ -6,6 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".createAccount">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            app:srcCompat="@drawable/rectangle" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:translationX="0dp"
+            android:translationY="350dp"
+            app:srcCompat="@drawable/triangle" />
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,21 +51,45 @@
 
         <Button
             android:id="@+id/createNewEmployee"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Create New Employee Account"/>
+            android:layout_width="279dp"
+            android:layout_height="35dp"
+            android:background="@drawable/rect_button"
+            android:padding="2dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:text="Create New Employee Account"
+            android:translationX="60dp"
+            android:translationY="10dp" />
 
         <Button
             android:id="@+id/createNewPatient"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Create new Patient Account"/>
+            android:layout_width="279dp"
+            android:layout_height="31dp"
+            android:background="@drawable/rect_button"
+            android:padding="2dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:text="Create new Patient Account"
+            android:translationX="60dp"
+            android:translationY="30dp" />
 
         <Button
             android:id="@+id/signInAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sign in as Admin"/>
+            android:layout_width="277dp"
+            android:layout_height="35dp"
+            android:background="@drawable/rect_button"
+            android:padding="2dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:text="Sign in as Admin"
+            android:translationX="60dp"
+            android:translationY="50dp" />
 
     </LinearLayout>
 

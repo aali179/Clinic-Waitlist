@@ -17,13 +17,18 @@
 
     <Button
         android:id="@+id/addService"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
-        android:text="ADD" />
+        android:layout_width="165dp"
+        android:layout_height="30dp"
+        android:background="@drawable/rect_button"
+        android:text="ADD"
+        android:translationX="120dp" />
 
     <Button
         android:id="@+id/delService"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
-        android:text="DELETE" />
+        android:layout_width="163dp"
+        android:layout_height="30dp"
+        android:background="@drawable/rect_button"
+        android:text="DELETE"
+        android:translationX="120dp"
+        android:translationY="10dp" />
 </LinearLayout>

@@ -5,7 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".bookingSection">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            app:srcCompat="@drawable/rectangle" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,15 +25,20 @@
 
         <TextView
             android:id="@+id/waitingTime"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Approx Waiting Time: "/>
 
         <Button
             android:id="@+id/bookAppointment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="book"/>
+            android:layout_width="214dp"
+            android:layout_height="28dp"
+            android:background="@drawable/rect_button"
+            android:text="book"
+            android:translationX="100dp"
+            android:translationY="100dp" />
 
     </LinearLayout>
 

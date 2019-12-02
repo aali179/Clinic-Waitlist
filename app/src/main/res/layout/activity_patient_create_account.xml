@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".patientCreateAccount">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            app:srcCompat="@drawable/rectangle" />
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -69,15 +82,18 @@
             android:id="@+id/signInLink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Already have an account? Click here to Sign in"
-            android:gravity="center"/>
+            android:textColor="#64B5F6" />
 
         <Button
             android:id="@+id/createPatientAccount"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_width="151dp"
+            android:layout_height="29dp"
             android:layout_gravity="center"
-            android:text="Create Account"/>
+            android:background="@drawable/rect_button"
+            android:text="Create Account"
+            android:translationY="10dp" />
 
     </LinearLayout>
 

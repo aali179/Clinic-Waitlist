@@ -5,6 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".editServiceScreen">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            app:srcCompat="@drawable/rectangle" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,6 +25,8 @@
 
         <TextView
             android:layout_width="match_parent"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
             android:layout_height="wrap_content"
             android:text="Select a Service to edit:"/>
 
@@ -23,6 +37,8 @@
 
         <EditText
             android:id="@+id/editServiceNewName"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter new Name"/>
@@ -30,6 +46,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
             android:text="Select New Role"/>
 
         <Spinner
@@ -39,6 +57,7 @@
 
         <Button
             android:id="@+id/editChangeConfirm"
+            android:background="@drawable/rect_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Confirm Changes"/>
@@ -47,7 +66,9 @@
             android:id="@+id/cancelEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancel"/>
+            android:background="@drawable/rect_button"
+            android:text="Cancel"
+            android:translationY="10dp" />
 
     </LinearLayout>
 

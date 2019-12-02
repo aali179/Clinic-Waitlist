@@ -52,21 +52,27 @@
 
     <Button
         android:id="@+id/updateService"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
-        android:text="UPDATE" />
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="@drawable/rect_button"
+        android:text="UPDATE"
+        android:translationY="10dp" />
 
     <Button
         android:id="@+id/addServ"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
-        android:text="ADD" />
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:background="@drawable/rect_button"
+        android:text="ADD"
+        android:translationY="20dp" />
 
     <Button
         android:id="@+id/deleteServ"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
-        android:text="DELETE" />
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@drawable/rect_button"
+        android:text="DELETE"
+        android:translationY="30dp" />
 
 
 </LinearLayout>

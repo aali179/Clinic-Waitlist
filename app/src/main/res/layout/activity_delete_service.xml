@@ -5,6 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".deleteService">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            app:srcCompat="@drawable/rectangle" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +26,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select a Service to Delete"/>
+            android:text="Select a Service to Delete"
+            android:textColor="#64B5F6" />
 
         <Spinner
             android:id="@+id/deleteServiceSpinner"
@@ -23,6 +36,7 @@
 
         <Button
             android:id="@+id/deleteDeleteServiceButton"
+            android:background="@drawable/rect_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Delete Service"/>
@@ -31,7 +45,9 @@
             android:id="@+id/cancelDeleteServiceButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancel"/>
+            android:background="@drawable/rect_button"
+            android:text="Cancel"
+            android:translationY="20dp" />
 
 
     </LinearLayout>

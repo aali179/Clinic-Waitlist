@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".editEmployeeProfile">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            app:srcCompat="@drawable/rectangle" />
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,24 +26,32 @@
 
         <EditText
             android:id="@+id/clinicNameUpdate"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Clinic Name"/>
 
         <EditText
             android:id="@+id/clinicEmailUpdate"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Email Address"/>
 
         <EditText
             android:id="@+id/clinicNumberUpdate"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Phone Number"/>
 
         <EditText
             android:id="@+id/clinicAddressUpdate"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Address"/>
@@ -47,20 +68,27 @@
 
         <EditText
             android:id="@+id/clinicPasswordUpdate"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Password"/>
 
         <EditText
             android:layout_width="match_parent"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
             android:layout_height="wrap_content"
             android:hint="Re-enter Password"/>
 
         <Button
             android:id="@+id/updateEmployee"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Update Information"/>
+            android:layout_width="223dp"
+            android:layout_height="31dp"
+            android:background="@drawable/rect_button"
+            android:text="Update Information"
+            android:translationX="100dp"
+            android:translationY="30dp" />
 
     </LinearLayout>
 
