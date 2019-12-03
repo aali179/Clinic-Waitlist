@@ -31,6 +31,7 @@
 
         <Spinner
             android:id="@+id/deleteServiceSpinner"
+            android:background="#8FAFCEE7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

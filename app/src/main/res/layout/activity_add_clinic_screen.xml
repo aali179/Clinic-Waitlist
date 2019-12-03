@@ -26,9 +26,9 @@
     <EditText android:layout_height="wrap_content"             android:textColor="#64B5F6"
         android:textColorHint="#64B5F6" android:layout_width="match_parent" android:hint="Phone Number" android:id="@+id/phoneClinic"/>
 
-    <Spinner android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/insurance" android:spinnerMode="dropdown" android:layout_gravity="center"/>
+    <Spinner android:layout_height="wrap_content"  android:background="#8FAFCEE7" android:layout_width="match_parent" android:id="@+id/insurance" android:spinnerMode="dropdown" android:layout_gravity="center"/>
 
-    <Spinner android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/payment" android:spinnerMode="dropdown"/>
+    <Spinner android:layout_height="wrap_content"  android:background="#8FAFCEE7" android:layout_width="match_parent" android:id="@+id/payment" android:spinnerMode="dropdown"/>
 
     <Button
         android:id="@+id/addClinicButton"

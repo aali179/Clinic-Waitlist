@@ -27,7 +27,9 @@
         <TextView
             android:id="@+id/clinicNameBooking"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="#64B5F6"
+            android:textColorHint="#64B5F6" />
 
         <Button
             android:layout_width="match_parent"

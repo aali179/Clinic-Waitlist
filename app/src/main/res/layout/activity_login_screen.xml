@@ -74,8 +74,8 @@
 
         <Button
             android:id="@+id/loginButton"
-            android:layout_width="236dp"
-            android:layout_height="38dp"
+            android:layout_width="206dp"
+            android:layout_height="30dp"
             android:background="@drawable/rect_button"
             android:padding="2dp"
             android:paddingLeft="10dp"
@@ -84,8 +84,8 @@
             android:paddingBottom="0dp"
             android:scrollHorizontally="false"
             android:text="Login"
-            android:translationX="100dp"
-            android:translationY="250dp" />
+            android:translationX="110dp"
+            android:translationY="260dp" />
 
         <TextView
             android:id="@+id/goToCreateAccount"
@@ -99,9 +99,12 @@
 
         <Spinner
             android:id="@+id/signInSelectionSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:translationY="150dp" />
+            android:layout_width="393dp"
+            android:layout_height="30dp"
+            android:background="#8FAFCEE7"
+            android:translationX="10dp"
+            android:translationY="150dp"
+            android:visibility="visible" />
 
     </LinearLayout>
 

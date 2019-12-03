@@ -25,22 +25,37 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search for a service"
+            android:textColor="#64B5F6"
+            android:textSize="24sp"
+            android:translationX="90dp"
+            android:translationY="20dp" />
+
         <Spinner
             android:id="@+id/searchServiceSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="40dp"
+            android:background="#8FAFCEE7"
+            android:translationY="40dp" />
 
         <Button
             android:id="@+id/searchServiceButton"
+            android:layout_width="196dp"
+            android:layout_height="30dp"
             android:background="@drawable/rect_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Search"/>
+            android:text="Search"
+            android:translationX="100dp"
+            android:translationY="70dp" />
 
         <ListView
             android:id="@+id/listViewService"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"/>
+            android:layout_height="534dp"
+            android:translationX="0dp"
+            android:translationY="90dp" />
 
 
     </LinearLayout>

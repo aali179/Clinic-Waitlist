@@ -48,15 +48,17 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="(Full Name)"
+            android:paddingTop="@android:dimen/notification_large_icon_height"
+            android:textColor="#42A0FC"
             android:textColorHint="#77A7C4"
-            android:textSize="14sp"
-            android:paddingTop="@android:dimen/notification_large_icon_height"/>
+            android:textSize="14sp" />
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="(Enter Email)"
+            android:textColor="#42A0FC"
             android:textColorHint="#77A7C4"
             android:textSize="14sp"/>
 
@@ -66,6 +68,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="(Password)"
+            android:textColor="#42A0FC"
             android:textColorHint="#77A7C4"
             android:textSize="14sp"/>
 
@@ -76,6 +79,7 @@
             android:gravity="center"
             android:hint="(Re-enter Password)"
             android:textColorHint="#77A7C4"
+            android:textColor="#42A0FC"
             android:textSize="14sp"/>
 
         <TextView

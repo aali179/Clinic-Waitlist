@@ -27,8 +27,8 @@
             android:id="@+id/imageView5"
             android:layout_width="323dp"
             android:layout_height="39dp"
-            android:translationX="30dp"
-            android:translationY="10dp"
+            android:translationX="40dp"
+            android:translationY="15dp"
             app:srcCompat="@drawable/welcome" />
 
         <Button
@@ -73,7 +73,7 @@
             android:layout_height="37dp"
             android:background="@drawable/rect_button"
             android:text="Logout"
-            android:translationX="70dp"
+            android:translationX="80dp"
             android:translationY="120dp" />
 
     </LinearLayout>

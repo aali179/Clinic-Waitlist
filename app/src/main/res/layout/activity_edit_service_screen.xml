@@ -32,6 +32,7 @@
 
         <Spinner
             android:id="@+id/editServiceSpinner"
+            android:background="#8FAFCEE7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -53,6 +54,7 @@
         <Spinner
             android:id="@+id/newRoleEditServiceSpinner"
             android:layout_width="match_parent"
+            android:background="#8FAFCEE7"
             android:layout_height="wrap_content"/>
 
         <Button
