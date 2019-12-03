@@ -52,6 +52,7 @@
             android:textColorHint="#3F7CAF"
             android:textSize="14sp"
             android:paddingTop="@android:dimen/notification_large_icon_height"/>
+
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
@@ -80,6 +81,7 @@
             android:hint="(Re-enter Password)"
             android:textColor="#5A91B9"
             android:textColorHint="#3F7CAF"
+
             android:textSize="14sp"/>
 
         <TextView

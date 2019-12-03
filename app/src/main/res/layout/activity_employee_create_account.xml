@@ -75,11 +75,13 @@
 
         <Spinner
             android:id="@+id/insuranceSpinner"
+            android:background="#8FAFCEE7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <Spinner
             android:id="@+id/paymentSpinner"
+            android:background="#8FAFCEE7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

@@ -39,10 +39,11 @@
 
         <Button
             android:id="@+id/addServiceEmployee"
-            android:background="@drawable/rect_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Service to Profile"/>
+            android:background="@drawable/rect_button"
+            android:text="Add Service to Profile"
+            android:translationY="20dp" />
 
     </LinearLayout>
 
