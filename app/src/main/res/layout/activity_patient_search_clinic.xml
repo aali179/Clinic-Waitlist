@@ -20,26 +20,15 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="-88dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select a clinic"
-            android:textColor="#64B5F6"
-            android:textSize="30sp"
-            android:translationX="100dp"
-            android:translationY="10dp" />
-
-        <TextView
-            android:id="@+id/lol"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 
         <ListView
             android:id="@+id/listViewClinic"

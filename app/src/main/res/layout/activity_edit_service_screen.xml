@@ -28,13 +28,17 @@
             android:textColor="#5A91B9"
             android:textColorHint="#3F7CAF"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            android:textSize="20sp"
             android:text="Select a Service to edit:"/>
 
         <Spinner
             android:id="@+id/editServiceSpinner"
             android:background="#8FAFCEE7"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"/>
 
         <EditText
             android:id="@+id/editServiceNewName"
@@ -42,20 +46,24 @@
             android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter new Name"/>
+            android:gravity="center"
+            android:hint="Enter name of new service"
+            android:layout_marginBottom="25dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#5A91B9"
             android:textColorHint="#3F7CAF"
+            android:textSize="15sp"
+            android:gravity="center"
             android:text="Select New Role"/>
 
         <Spinner
             android:id="@+id/newRoleEditServiceSpinner"
             android:layout_width="match_parent"
-            android:background="#8FAFCEE7"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"/>
 
         <Button
             android:id="@+id/editChangeConfirm"

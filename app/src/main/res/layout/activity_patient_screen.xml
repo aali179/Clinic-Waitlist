@@ -27,13 +27,18 @@
         <Button
             android:id="@+id/searchByClinicName"
             android:background="@drawable/rect_button"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
             android:text="Search by Clinic Name"/>
 
         <Button
             android:id="@+id/searchByServices"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:background="@drawable/rect_button"
             android:text="Search by Service"
@@ -41,7 +46,9 @@
 
         <Button
             android:id="@+id/isOpen"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:background="@drawable/rect_button"
             android:text="See what's open"

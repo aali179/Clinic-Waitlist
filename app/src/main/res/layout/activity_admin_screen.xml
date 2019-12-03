@@ -30,11 +30,23 @@
             android:paddingTop="@android:dimen/notification_large_icon_height"
             android:text="Welcome, you are logged in as admin"
             android:textColor="#64B5F6"
-            android:textColorHint="#64B5F6" />
+            android:textColorHint="#64B5F6"
+            android:textSize="21sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select from the following options"
+            android:textColor="#64B5F6"
+            android:textColorHint="#64B5F6"
+            android:gravity="center"
+            android:layout_marginBottom="50dp"
+            android:paddingBottom="@android:dimen/notification_large_icon_height"/>
 
         <Button
             android:id="@+id/addServiceButton"
-            android:layout_width="match_parent"
+            android:layout_width="155dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:background="@drawable/rect_button"
             android:shadowColor="#7986CB"
@@ -47,27 +59,32 @@
 
         <Button
             android:id="@+id/editServiceButton"
-            android:layout_width="match_parent"
+            android:layout_width="155dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:background="@drawable/rect_button"
             android:text="Edit Service"
-            android:translationY="20dp" />
+            android:translationY="20dp"
+            android:shadowColor="#7986CB"
+            android:textColor="#262D52"
+            android:typeface="sans"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:singleLine="true"/>
 
         <Button
             android:id="@+id/deleteServiceButton"
-            android:layout_width="match_parent"
+            android:layout_width="155dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:background="@drawable/rect_button"
             android:text="Delete Service"
-            android:translationY="40dp" />
+            android:translationY="40dp"
+            android:shadowColor="#7986CB"
+            android:textColor="#262D52"
+            android:typeface="sans"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:singleLine="true"/>
 
-        <Button
-            android:id="@+id/addClinicButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rect_button"
-            android:text="Add Clinic"
-            android:translationY="60dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

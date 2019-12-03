@@ -8,8 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class employeeScreen extends AppCompatActivity implements View.OnClickListener {
 
@@ -18,8 +22,11 @@ public class employeeScreen extends AppCompatActivity implements View.OnClickLis
     private Button logoutButton;
     private Button employeeViewProfile;
     private Button setHoursEmployee;
+    private TextView welcomeEmployee;
 
     private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
+    private DatabaseReference mRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +38,14 @@ public class employeeScreen extends AppCompatActivity implements View.OnClickLis
         logoutButton = (Button) findViewById(R.id.logoutButton);
         employeeViewProfile = (Button) findViewById(R.id.employeeViewProfile);
         setHoursEmployee = (Button) findViewById(R.id.setHoursEmployee);
+        welcomeEmployee = (TextView) findViewById(R.id.welcomeEmployee);
 
         mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        mRef = FirebaseDatabase.getInstance().getReference();
+
+        welcomeEmployee.append( (mRef.child("Employees").child(mUser.getUid()).child("name")).toString().trim());
+        welcomeEmployee.append(" Employee");
 
         serviceOptionButton.setOnClickListener(this);
         profileOptionButton.setOnClickListener(this);

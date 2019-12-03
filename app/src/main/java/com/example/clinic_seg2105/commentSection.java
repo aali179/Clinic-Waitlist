@@ -35,36 +35,39 @@ import java.util.SimpleTimeZone;
 
 public class commentSection extends AppCompatActivity implements View.OnClickListener{
 
-    private RecyclerView commentList;
     private RecyclerView.Adapter mAdapter;
-
 
     private EditText commentInput;
     private ImageButton postCommentButton;
-    private TextView text;
 
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private DatabaseReference mRef;
 
-    Intent intent = getIntent();
-    private String getNamePrevActivity = intent.getStringExtra(patientBookingRating.CLINIC_NAME);
-    private String clinicId = intent.getStringExtra(patientBookingRating.ID_OF_CLINIC);
+    private String getNamePrevActivity;
+    private String clinicID;
 
-    ArrayList<Comments> comments = new ArrayList<>();
+    private TextView text;
+
+    ArrayList<String> ID_LIST = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment_section);
 
+        Intent intent = getIntent();
+        getNamePrevActivity = intent.getStringExtra(patientBookingRating.CLINIC_NAME);
+
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        mRef = FirebaseDatabase.getInstance().getReference("Employees");
+
+        nameToID(getNamePrevActivity);
 
         text = (TextView) findViewById(R.id.text);
-        text.setText("Nothing");
 
-
-        commentList = (RecyclerView) findViewById(R.id.commentList);
-        commentList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
@@ -72,20 +75,7 @@ public class commentSection extends AppCompatActivity implements View.OnClickLis
 
         commentInput = (EditText) findViewById(R.id.commentInput);
         postCommentButton = (ImageButton) findViewById(R.id.postCommentButton);
-
-        mAuth = FirebaseAuth.getInstance();
-        mUser = mAuth.getCurrentUser();
-        mRef = FirebaseDatabase.getInstance().getReference("Employees");
-
-        //populateComments(comments);
-
-
-        mAdapter = new commentAdapter(comments);
-
-        commentList.setLayoutManager(linearLayoutManager);
-        commentList.setAdapter(mAdapter);
         postCommentButton.setOnClickListener(this);
-
 
     }
 
@@ -93,14 +83,39 @@ public class commentSection extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.postCommentButton:
-                //pushValue("hello");
+                postCommentButton.setEnabled(false);
                 postingComment();
                 break;
         }
+
+
     }
 
-    private void postingComment(){
 
+    private void nameToID(String name){
+
+        DatabaseReference users = mRef;
+
+        users.orderByChild("name").equalTo(name).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    String id = ds.getKey();
+                    populateComments(id);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
+    private void postingComment(){
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -110,7 +125,6 @@ public class commentSection extends AppCompatActivity implements View.OnClickLis
                 for (DataSnapshot ds : dataSnapshot.getChildren()){
                     if ( (ds.child("name").getValue(String.class)).equals(clinic_name) ){
                         String emp_id = ds.getKey();
-                        clinicId = emp_id;
                         pushValue(emp_id);
                     }
                 }
@@ -122,7 +136,6 @@ public class commentSection extends AppCompatActivity implements View.OnClickLis
             }
         });
     }
-
 
     private void pushValue(String id){
 
@@ -145,9 +158,21 @@ public class commentSection extends AppCompatActivity implements View.OnClickLis
         mRef.child(id).child("Comments").push().setValue(commentMap);
     }
 
-    private void populateComments(final ArrayList<Comments> comm_list){
+    private void populateComments(String id){
+        RecyclerView commentList;
+        RecyclerView.Adapter mAdapter;
+        final ArrayList<Comments> comment_array = new ArrayList<>();
 
-        mRef.child(clinicId).child("Comments").addListenerForSingleValueEvent(new ValueEventListener() {
+        commentList = (RecyclerView) findViewById(R.id.commentList);
+        commentList.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+
+
+        DatabaseReference comments = mRef;
+
+        comments.child(id).child("Comments").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()){
@@ -156,9 +181,9 @@ public class commentSection extends AppCompatActivity implements View.OnClickLis
                     String t = ds.child("time").getValue(String.class);
                     String id = ds.child("uid").getValue(String.class);
 
-                    Comments comment = new Comments(c,d,t,id);
+                    Comments com = new Comments(c,d,t,id);
 
-                    comm_list.add(comment);
+                    comment_array.add(com);
                 }
             }
 
@@ -168,7 +193,13 @@ public class commentSection extends AppCompatActivity implements View.OnClickLis
             }
         });
 
+        mAdapter = new commentAdapter(comment_array);
+        commentList.setLayoutManager(linearLayoutManager);
+        commentList.setAdapter(mAdapter);
+
+
     }
+
 
 
 }

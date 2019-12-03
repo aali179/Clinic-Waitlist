@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,13 +20,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class loginScreen extends AppCompatActivity implements View.OnClickListener {
+public class loginScreen extends AppCompatActivity implements View.OnClickListener,
+        AdapterView.OnItemSelectedListener {
 
     private EditText email_login;
     private EditText password_login;
     private TextView goToCreateAccount;
     private Button loginButton;
     private Spinner signInSelectionSpinner;
+    private TextView adminSignIn;
 
     private FirebaseAuth mAuth;
 
@@ -39,16 +42,29 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
         password_login = (EditText) findViewById(R.id.passwordLn);
         goToCreateAccount = (TextView) findViewById(R.id.goToCreateAccount);
         loginButton = (Button) findViewById(R.id.loginButton);
+        adminSignIn = (TextView) findViewById(R.id.adminSignIn);
 
         signInSelectionSpinner = (Spinner) findViewById(R.id.signInSelectionSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.login_dropdown, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.login_dropdown, R.layout.color_spinner_layout);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
         signInSelectionSpinner.setAdapter(adapter);
+        signInSelectionSpinner.setOnItemSelectedListener(this);
 
         goToCreateAccount.setOnClickListener(this);
         loginButton.setOnClickListener(this);
+        adminSignIn.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(this, parent.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 
@@ -61,8 +77,10 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
             case R.id.goToCreateAccount:
                 Intent intent = new Intent(this, createAccount.class);
                 startActivity(intent);
-                finish();
                 break;
+            case R.id.adminSignIn:
+                Intent intentAdmin = new Intent(this, adminLogin.class);
+                startActivity(intentAdmin);
         }
 
     }
@@ -71,29 +89,19 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
         String temp_email = email_login.getText().toString().trim();
         String temp_pass = password_login.getText().toString().trim();
 
-        if (TextUtils.isEmpty(temp_pass)) {
-            Toast.makeText(this, "Please enter a password", Toast.LENGTH_LONG).show();
-            return;
+        if (TextUtils.isEmpty(temp_pass) || TextUtils.isEmpty(temp_email)) {
+            Toast.makeText(this, "Please enter all fields", Toast.LENGTH_LONG).show();
+        } else {
+
+            if (signInSelectionSpinner.getSelectedItem().toString().trim().equals("Employee")) {
+                loginAsEmployee();
+            }
+
+            if (signInSelectionSpinner.getSelectedItem().toString().trim().equals("Patient")) {
+                loginAsPatient();
+            }
         }
 
-        if (TextUtils.isEmpty(temp_email)) {
-            Toast.makeText(this, "Please enter a email", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        if (signInSelectionSpinner.getSelectedItem().toString().trim().equals("Employee")) {
-            loginAsEmployee();
-        }
-
-        if (signInSelectionSpinner.getSelectedItem().toString().trim().equals("Patient")) {
-            loginAsPatient();
-        }
-
-        if (temp_email.equals("admin@gmail.com") && temp_pass.equals("admin1234")) {
-            finish();
-            Intent intent = new Intent(this, adminScreen.class);
-            startActivity(intent);
-        }
 
     }
 
@@ -109,7 +117,7 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
                             finish();
                             startActivity(new Intent(getApplicationContext(), employeeScreen.class));
                         } else {
-                            Toast.makeText(loginScreen.this, "Could not login", Toast.LENGTH_LONG).show();
+                            Toast.makeText(loginScreen.this, "Incorrect email or password", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -127,7 +135,7 @@ public class loginScreen extends AppCompatActivity implements View.OnClickListen
                             finish();
                             startActivity(new Intent(getApplicationContext(), patientScreen.class));
                         } else {
-                            Toast.makeText(loginScreen.this, "Could not login", Toast.LENGTH_LONG).show();
+                            Toast.makeText(loginScreen.this, "Incorrect email or password", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

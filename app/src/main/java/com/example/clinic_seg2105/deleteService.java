@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,7 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class deleteService extends AppCompatActivity implements View.OnClickListener{
+public class deleteService extends AppCompatActivity implements View.OnClickListener,
+        AdapterView.OnItemSelectedListener{
 
     private Spinner deleteServiceSpinner;
     private Button deleteDeleteServiceButton;
@@ -57,6 +60,16 @@ public class deleteService extends AppCompatActivity implements View.OnClickList
 
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(this, parent.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
     private void spinnerSetUp() {
         deleteServiceSpinner = (Spinner) findViewById(R.id.deleteServiceSpinner);
 
@@ -70,9 +83,10 @@ public class deleteService extends AppCompatActivity implements View.OnClickList
                     servicesList.add(servName);
                 }
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(deleteService.this, android.R.layout.simple_spinner_dropdown_item, servicesList);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(deleteService.this, R.layout.color_spinner_layout, servicesList);
+                adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
                 deleteServiceSpinner.setAdapter(adapter);
+                deleteServiceSpinner.setOnItemSelectedListener(deleteService.this);
             }
 
             @Override
