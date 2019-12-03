@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 public class patientBookingRating extends AppCompatActivity implements View.OnClickListener {
@@ -17,11 +18,14 @@ public class patientBookingRating extends AppCompatActivity implements View.OnCl
     private TextView clinicNameBooking;
     private String getNamePrevActivity;
     private String clinic_ID;
+    private RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_booking_rating);
+
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
 
         Intent intent = getIntent();
         getNamePrevActivity = intent.getStringExtra(patientSearchClinic.EXTRA_TEXT);

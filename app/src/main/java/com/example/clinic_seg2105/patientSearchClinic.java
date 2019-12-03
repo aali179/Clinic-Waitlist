@@ -32,7 +32,6 @@ public class patientSearchClinic extends AppCompatActivity {
 
     ArrayList<String> clinicName= new ArrayList<String>();
 
-    TextView lol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,11 +93,7 @@ public class patientSearchClinic extends AppCompatActivity {
             }
         });
 
-        lol = findViewById(R.id.lol);
-        lol.setText(id_of_clinic);
-
         startIntent(name);
-
 
     }
 

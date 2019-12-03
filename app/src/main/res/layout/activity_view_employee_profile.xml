@@ -25,47 +25,69 @@
         android:orientation="vertical">
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Here is your profile Information:"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
+            android:textSize="20sp"
+            android:gravity="center"/>
+
+
+        <TextView
+            android:layout_marginTop="100dp"
             android:id="@+id/viewEmployeeName"
             android:textColor="#5A91B9"
             android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Clinic Name: "/>
 
         <TextView
             android:id="@+id/viewEmployeeEmail"
-
+            android:text="Email Address: "
             android:textColor="#5A91B9"
             android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/viewEmployeeNumber"
+            android:text="Phone Number: "
             android:textColor="#5A91B9"
             android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/viewEmployeeAddress"
+            android:text="Address: "
             android:textColor="#5A91B9"
             android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/viewEmployeeInsurance"
+            android:text="Insurance: "
             android:textColor="#5A91B9"
             android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/viewEmployeePayment"
+            android:text="Payment Method: "
             android:textColor="#5A91B9"
             android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
 
     </LinearLayout>
 

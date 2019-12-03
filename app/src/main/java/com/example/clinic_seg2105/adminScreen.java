@@ -20,7 +20,6 @@ public class adminScreen extends AppCompatActivity implements View.OnClickListen
     private Button addService;
     private Button editService;
     private Button deleteService;
-    private Button addClinic;
 
     FirebaseDatabase mDatabase;
 
@@ -33,7 +32,6 @@ public class adminScreen extends AppCompatActivity implements View.OnClickListen
         addService = (Button) findViewById(R.id.addServiceButton);
         editService = (Button) findViewById(R.id.editServiceButton);
         deleteService = (Button) findViewById(R.id.deleteServiceButton);
-        addClinic = (Button) findViewById(R.id.addClinicButton);
 
         mDatabase = FirebaseDatabase.getInstance();
 
@@ -41,7 +39,6 @@ public class adminScreen extends AppCompatActivity implements View.OnClickListen
         addService.setOnClickListener(this);
         editService.setOnClickListener(this);
         deleteService.setOnClickListener(this);
-        addClinic.setOnClickListener(this);
 
     }
 
@@ -56,9 +53,6 @@ public class adminScreen extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.deleteServiceButton:
                 deleteServiceActivity();
-                break;
-            case R.id.addClinicButton:
-                addClinicActivity();
                 break;
         }
 
@@ -80,8 +74,4 @@ public class adminScreen extends AppCompatActivity implements View.OnClickListen
         startActivity(intent);
     }
 
-    private void addClinicActivity(){
-        Intent intent = new Intent(getApplicationContext(), addClinic.class);
-        startActivity(intent);
-    }
 }

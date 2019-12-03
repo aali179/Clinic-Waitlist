@@ -89,6 +89,7 @@
             android:textColorHint="#3F7CAF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="Enter Password"/>
 
         <EditText
@@ -96,6 +97,7 @@
             android:textColor="#5A91B9"
             android:textColorHint="#3F7CAF"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="Re-enter Password"/>
 
         <Button

@@ -88,7 +88,7 @@ public class bookingSection extends AppCompatActivity implements View.OnClickLis
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                long count = (dataSnapshot.getChildrenCount() + 1) * 15;
+                long count = (dataSnapshot.getChildrenCount()) * 15;
                 String count_string = Long.toString(count);
                 waitingTime.append(count_string);
                 waitingTime.append(" minutes");

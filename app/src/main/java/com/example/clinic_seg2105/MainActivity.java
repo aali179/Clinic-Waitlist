@@ -17,10 +17,13 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity{
 
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference mRef;
 
 
 
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         firebaseAuth = FirebaseAuth.getInstance();
+        mRef = FirebaseDatabase.getInstance().getReference("Employees");
     }
 
     @Override
@@ -39,6 +43,8 @@ public class MainActivity extends AppCompatActivity{
         if (currentUser != null){
             Intent intent = new Intent (getApplicationContext(), loginScreen.class);
             startActivity(intent);
+            finish();
+
         } else{
             Intent intent = new Intent (getApplicationContext(), loginScreen.class);
             startActivity(intent);

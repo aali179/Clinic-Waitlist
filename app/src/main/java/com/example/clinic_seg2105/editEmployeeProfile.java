@@ -7,10 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,7 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class editEmployeeProfile extends AppCompatActivity implements View.OnClickListener {
+public class editEmployeeProfile extends AppCompatActivity implements View.OnClickListener,
+        AdapterView.OnItemSelectedListener  {
 
     private EditText clinicNameUpdate, clinicEmailUpdate, clinicNumberUpdate, clinicAddressUpdate, clinicPasswordUpdate;
     private Spinner insuranceSpinnerUpdate, paymentSpinnerUpdate;
@@ -50,6 +53,16 @@ public class editEmployeeProfile extends AppCompatActivity implements View.OnCli
 
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(this, parent.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
     private void initializer(){
         clinicNameUpdate = (EditText) findViewById(R.id.clinicNameUpdate);
         clinicEmailUpdate = (EditText) findViewById(R.id.clinicEmailUpdate);
@@ -67,16 +80,18 @@ public class editEmployeeProfile extends AppCompatActivity implements View.OnCli
 
 
     private void spinnerSetUp(){
+
         insuranceSpinnerUpdate = (Spinner) findViewById(R.id.insuranceSpinnerUpdate);
-        paymentSpinnerUpdate = (Spinner) findViewById(R.id.paymentSpinnerUpdate);
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.insurance_types, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.insurance_types, R.layout.color_spinner_layout);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
         insuranceSpinnerUpdate.setAdapter(adapter);
+        insuranceSpinnerUpdate.setOnItemSelectedListener(this);
 
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.payment_methods, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        paymentSpinnerUpdate = (Spinner) findViewById(R.id.paymentSpinnerUpdate);
+        ArrayAdapter adapter2 = ArrayAdapter.createFromResource(this, R.array.payment_methods, R.layout.color_spinner_layout);
+        adapter2.setDropDownViewResource(R.layout.spinner_dropdown_layout);
         paymentSpinnerUpdate.setAdapter(adapter2);
+        paymentSpinnerUpdate.setOnItemSelectedListener(this);
     }
 
     private void updateEmployeeFunction(){

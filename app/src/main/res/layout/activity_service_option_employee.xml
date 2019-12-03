@@ -24,10 +24,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add a service to this clinic from the following options"
+            android:textColor="#ffff"
+            android:layout_marginBottom="15dp"/>
+
         <Spinner
             android:id="@+id/serviceOptionForEmployee"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="45dp"/>
 
         <Button
             android:id="@+id/addServiceEmployee"

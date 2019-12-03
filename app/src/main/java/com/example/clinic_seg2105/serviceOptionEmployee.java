@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -20,7 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class serviceOptionEmployee extends AppCompatActivity implements View.OnClickListener {
+public class serviceOptionEmployee extends AppCompatActivity implements View.OnClickListener ,
+        AdapterView.OnItemSelectedListener {
 
     private Spinner serviceOptionForEmployee;
     private Button addServiceEmployee;
@@ -48,6 +51,17 @@ public class serviceOptionEmployee extends AppCompatActivity implements View.OnC
     }
 
     @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(this, parent.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+
+    @Override
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.addServiceEmployee:
@@ -68,9 +82,10 @@ public class serviceOptionEmployee extends AppCompatActivity implements View.OnC
                     servicesList.add(servName);
                 }
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(serviceOptionEmployee.this, android.R.layout.simple_spinner_dropdown_item, servicesList);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(serviceOptionEmployee.this, R.layout.color_spinner_layout, servicesList);
+                adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
                 serviceOptionForEmployee.setAdapter(adapter);
+                serviceOptionForEmployee.setOnItemSelectedListener(serviceOptionEmployee.this);
             }
 
             @Override

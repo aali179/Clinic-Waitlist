@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".bookingSection"
-            android:parentActivityName=".patientSearchClinic"></activity>
+        <activity android:name=".adminLogin"></activity>
+        <activity
+            android:name=".bookingSection"
+            android:parentActivityName=".patientSearchClinic" />
         <activity
             android:name=".commentSection"
             android:parentActivityName=".patientBookingRating" />

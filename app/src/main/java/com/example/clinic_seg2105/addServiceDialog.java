@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -76,6 +77,7 @@ public class addServiceDialog extends AppCompatDialogFragment {
 
         return builder.create();
     }
+
 
 
 }

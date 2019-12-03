@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class createAccount extends AppCompatActivity implements View.OnClickListener {
 
 
-    private Button createNewEmployee, createNewPatient, signInAdmin;
+    private Button createNewEmployee, createNewPatient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +34,9 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
 
         createNewEmployee = (Button) findViewById(R.id.createNewEmployee);
         createNewPatient = (Button) findViewById(R.id.createNewPatient);
-        signInAdmin = (Button) findViewById(R.id.signInAdmin);
 
         createNewEmployee.setOnClickListener(this);
         createNewPatient.setOnClickListener(this);
-        signInAdmin.setOnClickListener(this);
     }
 
     @Override
@@ -49,9 +47,6 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.createNewPatient:
                 createNewPatientFunction();
-                break;
-            case R.id.signInAdmin:
-                signInAdminFunction();
                 break;
         }
     }
@@ -69,7 +64,4 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
         startActivity(intent);
     }
 
-    private void signInAdminFunction(){
-
-    }
 }

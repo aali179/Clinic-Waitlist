@@ -48,7 +48,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="(Full Name)"
-            android:textColorHint="#77A7C4"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
             android:textSize="14sp"
             android:paddingTop="@android:dimen/notification_large_icon_height"/>
         <EditText
@@ -57,7 +58,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="(Enter Email)"
-            android:textColorHint="#77A7C4"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
             android:textSize="14sp"/>
 
         <EditText
@@ -66,7 +68,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="(Password)"
-            android:textColorHint="#77A7C4"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
             android:textSize="14sp"/>
 
         <EditText
@@ -75,7 +78,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="(Re-enter Password)"
-            android:textColorHint="#77A7C4"
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF"
             android:textSize="14sp"/>
 
         <TextView
@@ -84,7 +88,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Already have an account? Click here to Sign in"
-            android:textColor="#64B5F6" />
+            android:textColor="#5A91B9"
+            android:textColorHint="#3F7CAF" />
 
         <Button
             android:id="@+id/createPatientAccount"

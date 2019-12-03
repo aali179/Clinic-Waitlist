@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".loginScreen">
+    tools:context=".adminLogin">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,23 +18,6 @@
             android:scaleType="center"
             app:srcCompat="@drawable/rectangle" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:translationX="0dp"
-            android:translationY="350dp"
-            app:srcCompat="@drawable/triangle" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="339dp"
-            android:layout_height="74dp"
-            android:cropToPadding="false"
-            android:scaleType="centerInside"
-            android:translationX="20dp"
-            android:translationY="70dp"
-            app:srcCompat="@drawable/welcome" />
 
         <ImageView
             android:id="@+id/imageView6"
@@ -43,22 +26,6 @@
             android:translationX="20dp"
             android:translationY="480dp"
             app:srcCompat="@drawable/clinic_symbol" />
-
-        <TextView
-            android:id="@+id/adminSignIn"
-            android:layout_width="331dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="47dp"
-            android:layout_marginTop="385dp"
-            android:layout_marginEnd="33dp"
-            android:layout_marginBottom="327dp"
-            android:text="Admin sign in"
-            android:gravity="center"
-            android:textColor="#FFFFFF" />
 
     </RelativeLayout>
 
@@ -70,7 +37,7 @@
         tools:layout_editor_absoluteY="35dp">
 
         <EditText
-            android:id="@+id/emailLn"
+            android:id="@+id/emailAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="(Enter email)"
@@ -80,7 +47,7 @@
             android:translationY="200dp" />
 
         <EditText
-            android:id="@+id/passwordLn"
+            android:id="@+id/passwordAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="(Enter Password)"
@@ -91,7 +58,7 @@
             android:translationY="200dp" />
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/loginButtonAdmin"
             android:layout_width="236dp"
             android:layout_height="38dp"
             android:background="@drawable/rect_button"
@@ -105,21 +72,6 @@
             android:translationX="100dp"
             android:translationY="250dp" />
 
-        <TextView
-            android:id="@+id/goToCreateAccount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Don't have an account? Sign up Here"
-            android:textColor="#FFFFFF"
-            android:translationX="30dp"
-            android:translationY="20dp" />
-
-        <Spinner
-            android:id="@+id/signInSelectionSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:translationY="150dp"/>
 
     </LinearLayout>
 

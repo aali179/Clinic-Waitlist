@@ -31,12 +31,21 @@
             android:translationY="10dp"
             app:srcCompat="@drawable/welcome" />
 
+        <TextView
+            android:id="@+id/welcomeEmployee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome "
+            android:textColor="#FFFF"
+            android:layout_marginTop="35dp"/>
+
         <Button
             android:id="@+id/serviceOptionButton"
             android:layout_width="251dp"
             android:layout_height="26dp"
             android:background="@drawable/rect_button"
             android:text="Service Options"
+            android:gravity="center"
             android:translationX="70dp"
             android:translationY="30dp" />
 
@@ -46,6 +55,7 @@
             android:layout_height="25dp"
             android:background="@drawable/rect_button"
             android:text="Edit this Profile"
+            android:gravity="center"
             android:translationX="70dp"
             android:translationY="40dp" />
 
@@ -55,6 +65,7 @@
             android:layout_height="27dp"
             android:background="@drawable/rect_button"
             android:text="View my Profile"
+            android:gravity="center"
             android:translationX="70dp"
             android:translationY="50dp" />
 
@@ -64,6 +75,7 @@
             android:layout_height="25dp"
             android:background="@drawable/rect_button"
             android:text="Set Hours"
+            android:gravity="center"
             android:translationX="70dp"
             android:translationY="60dp" />
 
